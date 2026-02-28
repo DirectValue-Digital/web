@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salario: Gehalt, Firmenwagen & Vergleich - DirectValue Digital</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#10b981', 600: '#059669' } }, /* Emerald Accents for Salario */
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.7' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #9CA3AF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-emerald {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-emerald-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <div
+                    class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
+                </div>
+                <span
+                    class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">DirectValue
+                    Digital</span>
+            </a>
+
+            <a href="../index.html"
+                class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
+                ← Zurück
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-48 pb-20">
+
+        <!-- Hero Section -->
+        <section class="relative mb-24">
+            <!-- Background Glows -->
+            <div
+                class="absolute -top-48 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-600/20 rounded-full blur-[100px] -z-10 animate-pulse-glow">
+            </div>
+
+            <div class="container mx-auto px-6 text-center">
+                <div class="relative inline-block group mb-16">
+                    <!-- Stronger Backlight Glow -->
+                    <div
+                        class="absolute -inset-10 bg-gradient-to-r from-emerald-500/50 to-teal-500/50 rounded-full blur-3xl transform scale-125 animate-pulse-slow">
+                    </div>
+                    <img src="../assets/icon_salario.png" alt="Salario Icon"
+                        class="relative w-40 h-40 md:w-56 md:h-56 mx-auto animate-float z-10 block rounded-[3rem] shadow-2xl ring-1 ring-white/10"
+                        style="clip-path: inset(1px);">
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                    Gehalt, Firmenwagen<br>
+                    <span class="text-gradient-emerald">& Vergleich</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-light">
+                    Salario ist ein moderner, professioneller Gehaltsplaner für iOS, der es Arbeitnehmern
+                    ermöglicht, ihr Nettoeinkommen präzise zu berechnen, verschiedene Gehaltsszenarien zu
+                    vergleichen und die finanziellen Auswirkungen eines Firmenwagens im Detail zu analysieren.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features Grid (Kernfunktionen) -->
+        <section class="container mx-auto px-6 mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">🚀 Kernfunktionen</h2>
+                <p class="text-neutral-400 max-w-2xl mx-auto">Alles, was du für die präzise Planung deines Gehalts
+                    benötigst.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-2xl mb-6">
+                        💶</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Präziser Brutto-Netto-Rechner</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 mt-1">•</span>
+                            <span><strong>Umfassende Steuerdaten:</strong> Berücksichtigung von Steuerklasse (1-6),
+                                Kirchensteuer, Kinderfreibeträgen und Lohnsteuerfreibetrag.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 mt-1">•</span>
+                            <span><strong>Detaillierte Sozialabgaben:</strong> Genaue Aufschlüsselung von Renten-,
+                                Kranken-, Pflege- und Arbeitslosenversicherung.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 mt-1">•</span>
+                            <span><strong>Individuelle Beiträge & Abzüge:</strong> Anpassbare GKV/PKV, plus persönliche
+                                monatliche Abzüge (z.B. bAV, Tickets) direkt vom Netto.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 mt-1">•</span>
+                            <span><strong>Bonuszahlungen:</strong> Separate Berechnung jährlicher Boni inkl. exakter
+                                Zuweisung und steuerlicher Behandlung.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-2xl mb-6">🚗
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Detaillierte Firmenwagen-Analyse</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Fahrzeugdaten:</strong> Eingabe von Bruttolistenpreis und Motorart
+                                (Verbrenner, Hybrid, Elektro) für 1%, 0,5%, 0,25% Regelung.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Arbeitsweg:</strong> Berechnung des geldwerten Vorteils für Fahrten zur ersten
+                                Tätigkeitsstätte (0,03% / 0,002% Regelung).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Zuzahlungen:</strong> Berücksichtigung von Eigenbeteiligungen und pauschalen
+                                Zuzahlungen, die den geldwerten Vorteil mindern.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-2xl mb-6">⚖️
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Szenarien-Management & Vergleich</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Szenarien speichern:</strong> Beliebig viele Szenarien (z.B. "Aktueller Job",
+                                "Angebot Firma X") anlegen.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Direkter Vergleich (A/B):</strong> Dedizierte Ansicht stellt zwei Szenarien
+                                detailliert gegenüber.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Monats- & Jahresansicht:</strong> Vergleiche auf monatlicher oder jährlicher
+                                Basis (inkl. Boni).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Stundenlohn-Rechner:</strong> Automatische Berechnung des echten
+                                Netto-Stundenlohns.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-2xl mb-6">
+                        📊</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Transparente Ergebnisse & Export</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-500 mt-1">•</span>
+                            <span><strong>Aufgeschlüsselte Resultate:</strong> Klare visuelle Trennung von Kategorien
+                                (Reguläres Einkommen vs. Bonus-Monat).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-500 mt-1">•</span>
+                            <span><strong>Export-Funktion:</strong> Ergebnisse und Gegenüberstellungen als Bild
+                                exportieren und direkt teilen.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section (Warum Salario) -->
+        <section class="container mx-auto px-6 mb-24">
+            <div class="glass-card rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center relative z-10">💡 Warum Salario?
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 relative z-10">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Maximale Transparenz bei Jobangeboten</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Nutzer tappen bei Gehaltsverhandlungen oder neuen Jobangeboten nicht länger im Dunkeln. Der
+                            Vergleichsmodus zeigt sofort, ob sich ein Wechsel finanziell wirklich lohnt – nach Abzug
+                            aller Steuern.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Die Firmenwagen-Lüge aufdecken</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Oft wird ein Firmenwagen als großer Bonus verkauft, mindert durch den geldwerten Vorteil
+                            aber das Netto-Gehalt drastisch. Salario rechnet gnadenlos transparent aus, wie viel
+                            Netto-Gehalt der Wagen am Ende des Monats real kostet.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Alle Kosten auf einen Blick</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Durch die Integration eigener, nutzerdefinierter Abzüge zeigt die App nicht nur ein
+                            theoretisches "Netto", sondern den Betrag, der wirklich auf dem Girokonto landet.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Vorbereitet in die Gehaltsverhandlung</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Mitarbeiter wissen durch die Berechnung des Netto-Stundenlohns, wie viel ihre Arbeitszeit
+                            wirklich wert ist. Wird die Arbeitszeit bei neuem Gehalt erhöht, zeigt Salario auf einen
+                            Blick, ob der reale Stundenlohn steigt oder gar sinkt.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 md:col-span-2 text-center mt-4">
+                        <div
+                            class="inline-flex items-center justify-center p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 max-w-2xl mx-auto">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2 flex items-center justify-center gap-2">
+                                    <span class="text-emerald-500">🔒</span> Datensicherheit (Privacy First)
+                                </h3>
+                                <p class="text-neutral-400 text-sm leading-relaxed">
+                                    Die App funktioniert komplett offline und speichert alle höchst sensiblen Gehalts-
+                                    und Steuerdaten lokal auf dem iPhone (mithilfe von SwiftData). Es ist kein Account
+                                    zwingend notwendig, und Daten fließen nicht an Drittanbietern ab.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="container mx-auto px-6 mb-8 text-center max-w-3xl">
+            <div class="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
+                <p class="text-xs text-neutral-500 leading-relaxed">
+                    <strong class="text-neutral-400">Rechtlicher Hinweis:</strong> Salario berechnet Gehälter und
+                    Steuern auf Basis allgemeingültiger Formeln und dient lediglich der Orientierung bzw. Planung. Die
+                    App ersetzt keine professionelle, individuelle Steuer- oder Rechtsberatung. Alle Berechnungen
+                    erfolgen ohne Gewähr auf Richtigkeit und Vollständigkeit.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="privacy.html"
+                    class="text-sm text-neutral-500 hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="../legal/impressum.html"
+                    class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

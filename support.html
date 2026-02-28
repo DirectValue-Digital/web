@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - DirectValue Digital</title>
+    <link rel="icon" href="assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#3b82f6', 600: '#2563eb' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-input {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 group p-2 hover:opacity-80 transition-opacity">
+                <img src="assets/logo.jpg" alt="DirectValue Digital Logo"
+                    class="w-14 h-14 rounded-lg shadow-lg shadow-blue-500/10 group-hover:scale-105 transition-transform">
+                <span class="font-bold text-xl tracking-tight text-white hidden sm:block">DirectValue Digital</span>
+            </a>
+
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Zurück zur Startseite
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center p-6 pt-32 pb-20">
+        <div class="w-full max-w-2xl space-y-12">
+
+            <div class="text-center space-y-4">
+                <h1
+                    class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-neutral-500 bg-clip-text text-transparent">
+                    Support
+                </h1>
+                <p class="text-lg text-neutral-400">
+                    Haben Sie Fragen oder benötigen Sie Hilfe zu unseren Apps? Kontaktieren Sie uns jederzeit.
+                </p>
+            </div>
+
+            <div class="bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 shadow-2xl">
+                <!-- Contact Form -->
+                <form action="mailto:contact@directvalue-digital.de" method="POST" enctype="text/plain"
+                    class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-neutral-400 mb-2">Name</label>
+                        <input type="text" id="name" name="Name" class="form-input" required placeholder="Ihr Name">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-neutral-400 mb-2">E-Mail</label>
+                        <input type="email" id="email" name="Email" class="form-input" required
+                            placeholder="ihre.email@beispiel.de">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-neutral-400 mb-2">Betreff</label>
+                        <input type="text" id="subject" name="Betreff" class="form-input" required
+                            placeholder="Worum geht es? (z.B. Waitless App)">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-neutral-400 mb-2">Nachricht</label>
+                        <textarea id="message" name="Nachricht" rows="5" class="form-input resize-none" required
+                            placeholder="Wie können wir Ihnen helfen?"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 bg-white text-black rounded-lg font-semibold hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 mt-4">
+                        <span>Nachricht per Mailprogramm senden</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                    <p class="text-xs text-neutral-600 text-center mt-2">Öffnet Ihr Standard-E-Mail-Programm.</p>
+                </form>
+
+                <div class="mt-8 pt-8 border-t border-neutral-800 text-center">
+                    <p class="text-neutral-500 text-sm mb-2">Oder schreiben Sie uns direkt eine E-Mail an:</p>
+                    <a href="mailto:contact@directvalue-digital.de"
+                        class="text-lg font-medium text-white hover:text-blue-400 transition-colors">
+                        contact@directvalue-digital.de
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-800 bg-[#020202] py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="text-neutral-500 text-sm">
+                &copy; 2026 DirectValue Digital.
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-neutral-400">
+                <a href="legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="https://www.directvalue-digital.de/08_Waitless/privacy.html"
+                    class="hover:text-white transition-colors">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

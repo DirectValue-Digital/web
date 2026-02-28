@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="de" class="dark scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waitless - Premium Countdown App</title>
+    <link rel="icon" href="../assets/10_Waitless-Icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        /* Custom font stack optimized for Apple devices but falling back gracefully */
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Rounded', 'Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed' },
+                        accent: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb' }
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(40px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-40px, 30px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030014;
+            /* Deep space dark */
+            color: #f8fafc;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(139, 92, 246, 0.4);
+            color: white;
+        }
+
+        /* Navigation Glass */
+        .glass-nav {
+            background: rgba(3, 0, 20, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Glass Card Base (ultraThinMaterial equivalent) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ambient Mesh Background */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #030014;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
+            animation: blob 12s infinite alternate;
+        }
+
+        .orb-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0) 70%);
+            animation: blob 15s infinite alternate-reverse;
+            animation-delay: 2s;
+        }
+
+        .orb-3 {
+            top: 40%;
+            left: 30%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0) 70%);
+            animation: blob 18s infinite alternate;
+            animation-delay: 4s;
+        }
+
+        /* App Icon with Backlight */
+        .backlight-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .backlight-icon::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6, #ec4899);
+            filter: blur(40px);
+            opacity: 0.7;
+            border-radius: 2rem;
+            z-index: -1;
+            animation: blob 8s infinite alternate;
+        }
+
+        .app-icon-img {
+            border-radius: 22.5%;
+            /* Apple standard app icon curvature */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Typography Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* List formatting */
+        .feature-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+        }
+
+        .feature-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Ambient Background -->
+    <div class="mesh-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital"
+                    class="w-10 h-10 rounded-lg shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+                <span
+                    class="font-bold tracking-tight text-white/90 group-hover:text-white transition-colors hidden sm:block">DirectValue
+                    Digital</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm font-medium">
+                <a href="#features" class="text-neutral-300 hover:text-white transition-colors">Features</a>
+                <a href="#details"
+                    class="text-neutral-300 hover:text-white transition-colors hidden sm:block">Details</a>
+                <a href="support.html"
+                    class="px-5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                    Support
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-24 px-6 relative z-10 w-full">
+
+        <!-- Hero Section -->
+        <section class="max-w-4xl mx-auto text-center mt-12 mb-32">
+            <div class="animate-float mb-12">
+                <div class="backlight-icon">
+                    <img src="../assets/10_Waitless-Icon.png" alt="Waitless App Icon"
+                        class="w-32 h-32 md:w-40 md:h-40 app-icon-img">
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 opacity-0 animate-slide-up text-gradient">
+                Waitless <br>
+                <span class="text-3xl md:text-5xl font-bold text-gradient-purple block mt-2">Deine Premium Countdown
+                    App</span>
+            </h1>
+
+            <p
+                class="text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-10 opacity-0 animate-slide-up stagger-1">
+                Waitless verwandelt das Warten auf besondere Momente in ein visuelles Erlebnis. Mit atemberaubendem
+                Glassmorphismus-Design und intelligenten Features behältst du alle wichtigen Events im Blick – elegant,
+                intuitiv und immer präsent.
+            </p>
+
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-slide-up stagger-2">
+                <div
+                    class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full flex items-center gap-3">
+                    <span class="text-2xl">📱</span>
+                    <span class="text-sm font-medium text-neutral-200">Exklusiv für iOS 17.0+</span>
+                </div>
+                <div
+                    class="px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full flex items-center gap-3">
+                    <span class="text-2xl">✨</span>
+                    <span class="text-sm font-medium text-neutral-200">Dynamic Island Support</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Features Grid -->
+        <section id="features" class="max-w-7xl mx-auto mb-32 scroll-mt-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Hauptfeatures</h2>
+                <div class="w-16 h-1 bg-brand-500 rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Premium Design -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-purple-500/30">
+                        🎨
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Premium Glassmorphism Design</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Mesh-Gradient Hintergründe:</strong> Tiefe, lebendige
+                            Farbverläufe in Blau- und Lilatönen</li>
+                        <li><strong class="text-white">Frosted Glass Cards:</strong> Transluzente Karten mit
+                            ultraThinMaterial-Effekt</li>
+                        <li><strong class="text-white">Moderne Typografie:</strong> SF Pro Rounded Heavy für maximale
+                            Lesbarkeit</li>
+                        <li><strong class="text-white">Dark Mode optimiert:</strong> Perfekt abgestimmte Farbpalette für
+                            OLED-Displays</li>
+                    </ul>
+                </div>
+
+                <!-- Intelligente Countdown -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-blue-500/30">
+                        📅
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Countdown-Verwaltung</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Kategorien:</strong> Geburtstage, Urlaub, Events – jede mit
+                            eigenem Icon</li>
+                        <li><strong class="text-white">Premium & Eigene Bilder:</strong> Kuratierte Bilder oder
+                            persönlicher Upload (Widget-optimiert)</li>
+                        <li><strong class="text-white">Wiederholung:</strong> Geburtstage & wiederkehrende Events
+                            automatisch aktualisieren</li>
+                        <li><strong class="text-white">Farbauswahl:</strong> Schriftfarbe individuell an den Hintergrund
+                            anpassen</li>
+                    </ul>
+                </div>
+
+                <!-- Live Activities -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-pink-500/30">
+                        📱
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Live Activities & Island</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Lock Screen Integration:</strong> Dein Countdown direkt auf dem
+                            Sperrbildschirm</li>
+                        <li><strong class="text-white">Dynamic Island:</strong> Elegante Anzeige auf iPhone 14 Pro und
+                            neuer</li>
+                        <li><strong class="text-white">48-H-Logik:</strong> Live Activities starten automatisch, wenn
+                            das Event in Reichweite ist</li>
+                        <li><strong class="text-white">Background Sync:</strong> App wacht intelligent auf für
+                            Activity-Starts</li>
+                    </ul>
+                </div>
+
+                <!-- Smart Notifications -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-green-500/30">
+                        🔔
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Smart Notifications</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Lokale Benachrichtigungen:</strong> Werde rechtzeitig erinnert
+                        </li>
+                        <li><strong class="text-white">Zeitplanung:</strong> Automatische Anpassung bei wiederkehrenden
+                            Events</li>
+                    </ul>
+                </div>
+
+                <!-- Celebration Features -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-yellow-500/30">
+                        🎁
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Celebration Features</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Konfetti-Animation:</strong> Wenn der Moment da ist, regnet es
+                            Konfetti</li>
+                        <li><strong class="text-white">Sound:</strong> Applaus beim Erreichen des Ziels (optional)</li>
+                        <li><strong class="text-white">"PARTY TIME!":</strong> Spezielle Ansicht für erreichte
+                            Countdowns</li>
+                    </ul>
+                </div>
+
+                <!-- Widgets -->
+                <div class="glass-card p-8">
+                    <div
+                        class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl mb-6 border border-indigo-500/30">
+                        🔄
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Widgets</h3>
+                    <ul class="feature-list text-sm">
+                        <li><strong class="text-white">Größen & Konfigurierbar:</strong> Small, Medium, Lock Screen –
+                            wähle das Event</li>
+                        <li><strong class="text-white">Live-Updates:</strong> Echtzeit-Synchronisation via Shared
+                            Container</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Highlights & Technical Details -->
+        <section id="details" class="max-w-7xl mx-auto mb-32 grid grid-cols-1 md:grid-cols-2 gap-8 scroll-mt-24">
+
+            <!-- Weitere Highlights -->
+            <div class="glass-card p-10 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-500/20 rounded-full blur-2xl"></div>
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span>🎯</span> Weitere Highlights
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">Teilen-Funktion</span>
+                        <span class="text-neutral-400 text-sm">Erstelle schöne Share-Bilder mit aktuellem
+                            Countdown-Status</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">Premium Tech</span>
+                        <span class="text-neutral-400 text-sm">SwiftData Integration für moderne, performante
+                            Datenspeicherung</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">100% Ablenkungsfrei</span>
+                        <span class="text-neutral-400 text-sm">Keine Werbung. Pures Erlebnis.</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">Privacy First</span>
+                        <span class="text-neutral-400 text-sm">Alle Daten bleiben lokal auf deinem Gerät. Keine
+                            Cloud-Schnüffelei.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technische Besonderheiten -->
+            <div class="glass-card p-10 relative overflow-hidden">
+                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-accent-500/20 rounded-full blur-2xl"></div>
+                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span>🏆</span> Technische Specs
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">Native iOS App</span>
+                        <span class="text-neutral-400 text-sm">100% SwiftUI für maximale Performance und flüssige
+                            Animationen</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">iOS 17+ Optimiert</span>
+                        <span class="text-neutral-400 text-sm">Nutzt modernste Apple-Technologien von ActivityKit bis zu
+                            Background Tasks</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white">Accessibility</span>
+                        <span class="text-neutral-400 text-sm">Vollständig barrierefrei gestaltet – Inklusion by
+                            design</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Perfect For & Philosophy -->
+        <section class="max-w-5xl mx-auto mb-24 relative">
+            <div class="glass-card p-10 md:p-14 text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">💎 Perfekt für jeden Meilenstein</h2>
+
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-14">
+                    <span
+                        class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 hover:scale-105 transition-all cursor-default">🎂
+                        Geburtstage</span>
+                    <span
+                        class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 hover:scale-105 transition-all cursor-default">✈️
+                        Urlaube</span>
+                    <span
+                        class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 hover:scale-105 transition-all cursor-default">📚
+                        Prüfungen</span>
+                    <span
+                        class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 hover:scale-105 transition-all cursor-default">💍
+                        Hochzeiten</span>
+                    <span
+                        class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-full text-white font-medium hover:bg-white/10 hover:scale-105 transition-all cursor-default">🌍
+                        Reisen</span>
+                </div>
+
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="text-xl font-bold text-white mb-4">🎨 Design-Philosophie</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Waitless verbindet modernste Glassmorphismus-Ästhetik mit intuitiver Bedienung. Jedes Detail
+                        wurde sorgfältig gestaltet, um ein Premium-Erlebnis zu schaffen, das sowohl schön als auch
+                        funktional ist. Die App fühlt sich lebendig an – mit sanften Animationen, transluzenten
+                        Oberflächen und einer Farbpalette, die deine Augen verwöhnt.
+                    </p>
+                </div>
+
+                <div class="mt-12 pt-12 border-t border-white/10">
+                    <h3 class="text-2xl font-bold text-white mb-6">Weil jeder Moment zählt. <span
+                            class="text-brand-400">⏱️✨</span></h3>
+                    <p class="text-sm font-medium text-neutral-500 uppercase tracking-widest">Available for iOS 17.0+
+                        (DE/EN)</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-[#010008]/80 backdrop-blur-lg py-10 mt-auto relative z-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="../assets/logo.jpg" alt="Logo" class="w-8 h-8 rounded-md">
+                <div class="text-neutral-500 text-sm">
+                    &copy; 2026 DirectValue Digital.<br>
+                    <span class="text-xs">Made in Germany.</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-neutral-400">
+                <a href="support.html" class="hover:text-white transition-colors">Support</a>
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="https://www.directvalue-digital.de/08_Countdown/privacy.html"
+                    class="hover:text-white transition-colors">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

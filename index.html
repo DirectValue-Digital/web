@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirectValue Digital</title>
+    <link rel="icon" href="assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#3b82f6', 600: '#2563eb' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="support.html" class="flex items-center gap-4 group cursor-pointer"
+                title="DirectValue Digital Support">
+                <img src="assets/logo.jpg" alt="Logo"
+                    class="w-14 h-14 rounded-lg shadow-lg shadow-blue-500/10 group-hover:scale-105 transition-transform">
+                <span class="font-bold text-xl tracking-tight text-white">DirectValue Digital</span>
+            </a>
+            <!-- Optional Nav Links -->
+            <div class="hidden md:flex gap-8 text-sm font-medium text-neutral-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-48 md:pt-64 pb-40 overflow-hidden">
+        <!-- Hero Image Container -->
+        <div class="max-w-7xl mx-auto px-6 mb-32 md:mb-48">
+            <div class="relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
+                <img src="assets/hero_banner.png" alt="DirectValue Digital Hero Banner"
+                    class="w-full h-full object-cover">
+                <!-- Optional: Subtle gradient overlay for better integration with dark mode, but much lighter than before -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/40 to-transparent"></div>
+            </div>
+        </div>
+
+        <!-- Text Content -->
+        <div id="about" class="max-w-7xl mx-auto px-6 text-center scroll-mt-32">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-12 pb-2">
+                <span class="bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-300 to-gray-500">Digital
+                    Excellence.</span><br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-b from-gray-500 via-gray-600 to-gray-800">Made
+                    in Germany.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+                Wir entwickeln Software, die echten Mehrwert schafft. Präzise, hochwertig und auf den Punkt.
+                Kein Schnickschnack, nur Resultate.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section id="portfolio" class="py-20 bg-neutral-900/20 border-t border-neutral-800/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Unser Portfolio</h2>
+                    <p class="text-neutral-500">Ausgewählte Projekte und Anwendungen.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Statis: Minimal System Monitor -->
+                <a href="01_Statis/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                    <img src="assets/icon_statis.png" alt="Statis Icon" class="w-16 h-16 mb-6"
+                        style="clip-path: inset(1px);">
+                    <h3 class="text-xl font-bold text-white mb-2">Statis: Minimal System Monitor</h3>
+                    <p class="text-sm text-neutral-500 mb-4 line-clamp-2">Minimalistisches System-Monitoring für macOS.
+                        Elegant und ressourcenschonend.</p>
+                </a>
+
+                <!-- Travel Games -->
+                <a href="03_Travel_Games/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <div
+                        class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Travel Games</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Unterhaltung für unterwegs. Interaktive Spiele für Reisen.
+                    </p>
+                </a>
+
+                <!-- Lernbuddy -->
+                <a href="04_Lernbuddy/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <img src="assets/icon_lernbuddy.png" alt="Lernbuddy Icon" class="w-16 h-16 mb-6"
+                        style="clip-path: inset(1px);">
+                    <h3 class="text-xl font-bold text-white mb-2">Lernbuddy</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Der intelligente Lernassistent für Schüler und Studenten.
+                    </p>
+                </a>
+
+                <!-- Workout Timer -->
+                <a href="05_Workout_Timer/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <div
+                        class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Workout Timer</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Präzises Timing für High-Intensity Interval Training.</p>
+                </a>
+
+                <!-- Checklist -->
+                <a href="06_Checklist/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <div
+                        class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-500 mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Checklist</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Intelligente Listen für effizientes Aufgabenmanagement.</p>
+                </a>
+
+                <!-- Brainstorm 2 Mindmap -->
+                <a href="07_Brainstorm_2_Mindmap/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <div
+                        class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-500 mb-6 group-hover:bg-yellow-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Brainstorm 2 Mindmap</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Von der Idee zur Struktur. KI-gestütztes Mindmapping.</p>
+                </a>
+
+                <!-- Waitless Countdown -->
+                <a href="08_Countdown/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <img src="assets/10_Waitless-Icon.png" alt="Waitless Countdown Icon"
+                        class="w-16 h-16 mb-6 rounded-2xl" style="clip-path: inset(1px);">
+                    <h3 class="text-xl font-bold text-white mb-2">Waitless Countdown</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Wichtige Ereignisse im Blick. Visualisierte Zeitrechnung.
+                    </p>
+                </a>
+
+                <!-- HRV Optimization -->
+                <a href="09_HRV_Optimization/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <img src="assets/icon_hrv.png" alt="HRV Optimization Icon" class="w-16 h-16 mb-6"
+                        style="clip-path: inset(1px);">
+                    <h3 class="text-xl font-bold text-white mb-2">HRV Optimization</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Gesundheitsdaten analysieren und Bio-Feedback nutzen.</p>
+                </a>
+
+                <!-- Salario -->
+                <a href="10_Salario/index.html"
+                    class="group relative block bg-[#0a0a0a] rounded-2xl border border-neutral-800 p-8 transition-all duration-300 card-hover overflow-hidden">
+                    <div
+                        class="absolute top-4 right-4 bg-neutral-800 text-neutral-400 text-xs px-2 py-1 rounded-md font-medium border border-neutral-700">
+                        Soon</div>
+                    <img src="assets/icon_salario.png" alt="Salario Icon" class="w-16 h-16 mb-6"
+                        style="clip-path: inset(1px);">
+                    <h3 class="text-xl font-bold text-white mb-2">Salario</h3>
+                    <p class="text-sm text-neutral-500 mb-4">Gehaltsrechner und Firmenwagen-Vergleich.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-24 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Bereit für den nächsten Schritt?</h2>
+            <p class="text-xl text-neutral-400 mb-10 leading-relaxed">
+                Lassen Sie uns gemeinsam digitale Lösungen entwickeln, die Ihr Unternehmen voranbringen.
+                Wir freuen uns auf Ihre Anfrage.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="mailto:contact@directvalue-digital.de"
+                    class="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-neutral-200 transition-all duration-300">
+                    <span>Projekt anfragen</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+
+                <div class="flex flex-col items-center sm:items-start text-neutral-400 text-sm">
+                    <span class="font-medium text-white">Kontakt</span>
+                    <a href="mailto:contact@directvalue-digital.de"
+                        class="hover:text-blue-400 transition-colors">contact@directvalue-digital.de</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Legal -->
+    <footer id="contact" class="mt-auto border-t border-neutral-800 bg-[#020202] py-12 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-neutral-500 text-sm">
+                &copy; 2026 DirectValue Digital. All rights reserved.
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-neutral-400">
+                <a href="legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="legal/privacy.html" class="hover:text-white transition-colors">Datenschutz</a>
+                <a href="mailto:contact@directvalue-digital.de" class="hover:text-white transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

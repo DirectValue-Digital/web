@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statis: Minimal System Monitor - DirectValue Digital</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#8b5cf6', 600: '#7c3aed' } }, /* Purple Accents for Statis */
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '0.8' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #9CA3AF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-purple-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-4 group p-2">
+                <img src="../assets/logo.jpg" alt="Logo"
+                    class="w-14 h-14 rounded-lg shadow-lg shadow-purple-500/10 group-hover:scale-105 transition-transform">
+                <span class="font-bold text-xl tracking-tight text-white">DirectValue Digital</span>
+            </a>
+
+            <a href="../index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-60 pb-20">
+
+        <!-- Hero Section -->
+        <section class="relative mb-24">
+            <!-- Background Glows -->
+            <div
+                class="absolute -top-48 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[100px] -z-10 animate-pulse-glow">
+            </div>
+
+            <div class="container mx-auto px-6 text-center">
+                <div class="relative inline-block group mb-12">
+                    <div
+                        class="absolute -inset-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-3xl opacity-50 group-hover:opacity-75 transition-opacity duration-500">
+                    </div>
+                    <img src="../assets/icon_statis.png" alt="Statis Icon"
+                        class="relative w-40 h-40 md:w-56 md:h-56 mx-auto animate-float z-10 block"
+                        style="clip-path: inset(1px);">
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                    The Beautiful System Monitor<br>
+                    <span class="text-gradient">for macOS</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                    The beauty of your system performance at a glance.
+                </p>
+
+                <a href="#" class="inline-block transition-transform duration-300 hover:scale-105">
+                    <img src="../assets/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+                        alt="Download on the Mac App Store" class="h-[52px]">
+                </a>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-24 px-6">
+            <div class="container mx-auto max-w-3xl text-center glass-card rounded-3xl p-10 md:p-14">
+                <p class="text-lg md:text-xl text-neutral-300 leading-loose">
+                    Statis is the elegant, unobtrusive system monitor your Mac deserves.
+                    <br><br>
+                    Designed with a focus on aesthetics and performance, Statis provides you with all essential
+                    system data in a beautiful, modern design—without distraction or wasting resources.
+                </p>
+            </div>
+        </section>
+
+        <!-- Dashboard Screenshot -->
+        <section class="container mx-auto px-6 mb-32 mt-12 text-center fade-in-up">
+            <div class="relative inline-block group">
+                <!-- Glow Effect behind screenshot -->
+                <div
+                    class="absolute -inset-10 bg-gradient-to-r from-purple-500/40 to-blue-500/40 rounded-[3rem] blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                </div>
+
+                <img src="../assets/01_statis_dashboard_preview.png" alt="Statis Dashboard"
+                    class="relative w-full max-w-5xl shadow-2xl transform transition-transform duration-700 hover:scale-[1.01]">
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="container mx-auto px-6 mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">Key Features & Highlights</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Feature 1: Performance -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">🚀</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Performance First</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Native macOS app written 100% in Swift. Extremely lightweight with minimal CPU footprint,
+                        ensuring your Mac stays fast.
+                    </p>
+                </div>
+
+                <!-- Feature 2: At a Glance -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">📊</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Everything at a Glance</h3>
+                    <ul class="text-neutral-400 space-y-3 text-sm">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                            CPU Usage (Real-time)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                            RAM Usage & Bottlenecks</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            SSD Storage Available</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                            Battery Health & Level</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                            Thermal State Monitoring</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: Design -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">💎</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Glassmorphism UI</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Modern, translucent design that blends seamlessly into macOS. Optimized with perfectly tuned
+                        colors for Dark Mode.
+                    </p>
+                </div>
+
+                <!-- Feature 4: Pin Mode -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">📌</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Always-On-Top</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Pin the Statis window to float above other apps with one click. Ideal for developers, gamers,
+                        and power users.
+                    </p>
+                </div>
+
+                <!-- Feature 5: Menu Bar -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">🖥</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Menu Bar Integration</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Statis lives in your menu bar. See a discrete indicator for CPU, RAM, or Battery, and click to
+                        open the detailed dashboard.
+                    </p>
+                </div>
+
+                <!-- Feature 6: Privacy -->
+                <div class="glass-card rounded-3xl p-8 transition-all duration-300">
+                    <div class="text-4xl mb-6">🔒</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Privacy & Security</h3>
+                    <p class="text-neutral-400 leading-relaxed">
+                        <strong>100% Local.</strong> All system data is analyzed on your device. No analytics, no ads,
+                        no external servers. Your data belongs to you.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Statis -->
+        <section class="container mx-auto px-6 max-w-4xl text-center mb-20">
+            <h2 class="text-3xl font-bold text-white mb-8">Why Statis?</h2>
+            <p class="text-lg text-neutral-400 leading-relaxed">
+                Other system monitors are often cluttered, technically complex, or outdated in design.
+                <span class="text-white font-medium">Statis is the answer</span> for everyone who loves simplicity and
+                aesthetics without sacrificing precision.
+                It's the dashboard you'll love to keep open.
+            </p>
+
+            <a href="#" class="inline-block mt-12 transition-transform duration-300 hover:scale-105">
+                <img src="../assets/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+                    alt="Download on the Mac App Store" class="h-[40px]">
+            </a>
+        </section>
+
+        <!-- Footer Links -->
+        <div class="text-center space-x-6 border-t border-white/5 pt-10">
+            <a href="privacy.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Privacy
+                Policy</a>
+            <span class="text-neutral-700">|</span>
+            <a href="../legal/impressum.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Legal
+                Notice / Impressum</a>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

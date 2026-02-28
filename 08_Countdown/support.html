@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de" class="dark scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Waitless Countdown App</title>
+    <link rel="icon" href="../assets/10_Waitless-Icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Rounded', 'Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed' },
+                        accent: { 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030014;
+            color: #f8fafc;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: rgba(139, 92, 246, 0.4);
+            color: white;
+        }
+
+        /* Navigation Glass */
+        .glass-nav {
+            background: rgba(3, 0, 20, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Glass Form Elements */
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+        }
+
+        .app-icon-img {
+            border-radius: 22.5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ambient Mesh Background */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #030014;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.3;
+            /* Less intense than landing page */
+            z-index: 0;
+        }
+
+        .orb-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
+        }
+
+        .orb-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Ambient Background -->
+    <div class="mesh-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 group">
+                <img src="../assets/10_Waitless-Icon.png" alt="Waitless App Logo"
+                    class="w-12 h-12 app-icon-img group-hover:scale-105 transition-transform duration-300">
+                <span
+                    class="font-bold tracking-tight text-white/90 group-hover:text-white transition-colors text-xl">Waitless</span>
+            </a>
+
+            <a href="index.html" class="text-sm font-medium text-neutral-300 hover:text-white transition-colors">
+                ← App Startseite <span class="text-neutral-500">| App Home</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center p-6 pt-32 pb-20 relative z-10 w-full">
+        <div class="w-full max-w-2xl space-y-10">
+
+            <div class="text-center space-y-5">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-gradient mb-2">
+                    Waitless Support
+                </h1>
+                <div class="space-y-1">
+                    <p class="text-lg text-neutral-300 max-w-lg mx-auto">
+                        Probleme mit deinen Countdowns? Wir sind hier, um dir zu helfen.
+                    </p>
+                    <p class="text-base text-neutral-500 max-w-lg mx-auto">
+                        Having issues with your countdowns? We are here to help.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 md:p-10">
+                <!-- Contact Form -->
+                <form action="mailto:contact@directvalue-digital.de" method="POST" enctype="text/plain"
+                    class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Name <span
+                                class="text-neutral-500 font-normal">| Name</span></label>
+                        <input type="text" id="name" name="Name" class="form-input" required
+                            placeholder="Dein Name | Your name">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">E-Mail <span
+                                class="text-neutral-500 font-normal">| Email</span></label>
+                        <input type="email" id="email" name="Email" class="form-input" required
+                            placeholder="deine.email@beispiel.de | your.email@example.com">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Betreff <span
+                                class="text-neutral-500 font-normal">| Subject</span></label>
+                        <input type="text" id="subject" name="Betreff" class="form-input" required
+                            placeholder="Worum geht es? | What is this about?" value="Waitless App Support">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Nachricht
+                            <span class="text-neutral-500 font-normal">| Message</span></label>
+                        <textarea id="message" name="Nachricht" rows="6" class="form-input resize-none" required
+                            placeholder="Bitte beschreibe dein Problem oder deine Frage zur Waitless App... | Please describe your issue or question regarding the Waitless app..."></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-4 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <span>Senden / Send Message</span>
+                        <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                    <p class="text-sm text-neutral-500 text-center mt-3">Öffnet dein Standard-E-Mail-Programm / Opens
+                        your default email client.</p>
+                </form>
+
+                <div class="mt-10 pt-8 border-t border-white/10 text-center">
+                    <p class="text-neutral-400 text-sm mb-1">Oder schreibe uns direkt eine E-Mail an:</p>
+                    <p class="text-neutral-500 text-xs mb-3">Or write us an email directly to:</p>
+                    <a href="mailto:contact@directvalue-digital.de"
+                        class="text-lg font-medium text-brand-300 hover:text-brand-400 transition-colors">
+                        contact@directvalue-digital.de
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-[#010008]/80 backdrop-blur-lg py-8 mt-auto relative z-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="text-neutral-500 text-sm">
+                &copy; 2026 DirectValue Digital.
+            </div>
+            <div class="flex gap-6 text-sm font-medium text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum <span
+                        class="text-neutral-600 font-normal">| Imprint</span></a>
+                <a href="https://www.directvalue-digital.de/08_Countdown/privacy.html"
+                    class="hover:text-white transition-colors">Datenschutz <span class="text-neutral-600 font-normal">|
+                        Privacy</span></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

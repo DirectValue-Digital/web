@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainstorm 2 Mindmap - DirectValue Digital</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#3b82f6', 600: '#2563eb' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #e5e5e5; }
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-4 group p-2">
+                <img src="../assets/logo.jpg" alt="Logo" class="w-14 h-14 rounded-lg shadow-lg shadow-blue-500/10 group-hover:scale-105 transition-transform">
+                <span class="font-bold text-xl tracking-tight text-white">DirectValue Digital</span>
+            </a>
+            
+            <a href="../index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Zurück
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content (Centered) -->
+    <main class="flex-grow flex flex-col justify-center items-center text-center p-6 pt-32">
+        <div class="space-y-6">
+            <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-neutral-500 bg-clip-text text-transparent">
+                Brainstorm 2 Mindmap
+            </h1>
+            <p class="text-xl text-neutral-500">Coming Soon</p>
+        </div>
+    </main>
+
+</body>
+</html>
