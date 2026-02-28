@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowen - DirectValue Digital</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#06b6d4', 600: '#0891b2' } }, /* Cyan Accents for Flowen */
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.7' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #9CA3AF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-cyan-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <div
+                    class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
+                </div>
+                <span
+                    class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">DirectValue
+                    Digital</span>
+            </a>
+
+            <a href="../index.html"
+                class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
+                ← Zurück
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-48 pb-20">
+
+        <!-- Hero Section -->
+        <section class="relative mb-24">
+            <!-- Background Glows -->
+            <div
+                class="absolute -top-48 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-cyan-600/20 rounded-full blur-[100px] -z-10 animate-pulse-glow">
+            </div>
+
+            <div class="container mx-auto px-6 text-center">
+                <div class="relative inline-block group mb-16">
+                    <!-- Stronger Backlight Glow -->
+                    <div
+                        class="absolute -inset-10 bg-gradient-to-r from-cyan-500/50 to-blue-500/50 rounded-full blur-3xl transform scale-125 animate-pulse-slow -z-10">
+                    </div>
+                    <img src="../assets/icon_flowen.png" alt="Flowen Icon"
+                        class="relative w-40 h-40 md:w-56 md:h-56 mx-auto animate-float z-10 block rounded-[3rem] shadow-2xl ring-1 ring-white/10 bg-[#050505] object-cover"
+                        style="clip-path: inset(1px);">
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                    Denken. Sprechen.<br>
+                    <span class="text-gradient-cyan">Getippt.</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+                    Flowen ist der intelligenteste und schnellste Weg, um auf dem Mac zu tippen – mit deiner Stimme.
+                    Egal in welcher App du dich gerade befindest: Drücke einfach einen Hotkey, sprich deine Gedanken
+                    laut aus, und Flowen tippt den perfekt formatierten Text direkt dort ein, wo dein Cursor steht.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-cyan-400 font-medium">
+                    <span class="bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">Perfekte
+                        Zeichensetzung</span>
+                    <span class="bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">Lokale KI &
+                        Privatsphäre</span>
+                    <span class="bg-cyan-500/10 px-4 py-2 rounded-full border border-cyan-500/20">ChatGPT's Ohren für
+                        den Mac</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid (Kernfunktionen) -->
+        <section class="container mx-auto px-6 mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">🚀 Kernfunktionen</h2>
+                <p class="text-neutral-400 max-w-2xl mx-auto">Tippen wie von Geisterhand. Keine Ähms. In jeder App.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-2xl mb-6">
+                        🎯</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Globaler Hotkey & Auto-Paste</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-500 mt-1">•</span>
+                            <span><strong>Überall verfügbar:</strong> Ein globaler System-Hotkey (z.B. rechte
+                                Command-Taste) startet die Aufnahme – in Mail, Word, Slack oder im Browser.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-500 mt-1">•</span>
+                            <span><strong>Auto-Injektion:</strong> Sobald du aufhörst zu sprechen, fügt Flowen den Text
+                                genau dort ein, wo dein Cursor blinkt.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-cyan-500 mt-1">•</span>
+                            <span><strong>Zwischenablage-Fallback:</strong> Jeder Text wird zusätzlich in die
+                                Zwischenablage kopiert. Kein Gedanke geht verloren.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-2xl mb-6">🧠
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Drei mächtige Transkriptions-Engines</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>OpenAI Cloud (Premium):</strong> Nutzt das Whisper-Modell über API (BYOK).
+                                Höchste Genauigkeit der Welt, perfekte Zeichensetzung, ignoriert Stottern.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Lokales Whisper (Privacy First):</strong> Lade ein hochpräzises Modell auf den
+                                Mac. 100% offline, sensible Daten bleiben auf dem Gerät.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Apple Speech (Standard):</strong> Integrierte Mac-Diktierfunktion. Kostenlos,
+                                offline und blitzschnell mit Echtzeit-Text.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-2xl mb-6">
+                        🎨</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Wunderschönes, natives macOS Design</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-500 mt-1">•</span>
+                            <span><strong>Liquid Glass Overlay:</strong> Ein elegantes, halbtransparentes Overlay
+                                schwebt über dem Bildschirm und zeigt dynamische Audio-Wellenformen.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-500 mt-1">•</span>
+                            <span><strong>Unaufdringlich:</strong> Nach dem Diktieren verschwindet das Overlay sofort.
+                                Es beschleunigt deinen Workflow, statt ihn zu stören.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-500 mt-1">•</span>
+                            <span><strong>Menüleisten-App:</strong> Schneller Zugriff auf alle Einstellungen über das
+                                "Liquid Wave" Icon in der Menüleiste.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center text-2xl mb-6">⚙️
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Smarte Extras & Customization</h3>
+                    <ul class="text-neutral-400 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Voice Activity Detection (VAD):</strong> Flowen erkennt, wann du aufhörst zu
+                                sprechen. Kein zweites Drücken des Hotkeys nötig.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Intelligentes Prompting:</strong> Bringe der KI Fachbegriffe, Eigennamen oder
+                                firmeninterne Abkürzungen bei.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-500 mt-1">•</span>
+                            <span><strong>Lokales LLM (Advanced):</strong> Rohtext sofort durch ein starkes lokales
+                                Modell (z.B. Mistral) umformulieren oder bereinigen lassen.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy & Target Audience Section -->
+        <section class="container mx-auto px-6 mb-24">
+            <div class="glass-card rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
+                <!-- Background decoration -->
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10 md:gap-16 relative z-10">
+                    <!-- Privacy Focus -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-6">🔒 Fokus auf Privatsphäre</h2>
+                        <div class="space-y-4">
+                            <p class="text-neutral-400 leading-relaxed text-sm">
+                                Viele Business-User dürfen aus Datenschutzgründen (DSGVO, NDAs, Arztgeheimnis) keine
+                                Cloud-basierten Diktierfunktionen nutzen.
+                                Flowen löst dieses Problem durch <strong>Lokales Whisper</strong>.
+                            </p>
+                            <p class="text-neutral-400 leading-relaxed text-sm">
+                                Die KI läuft direkt auf dem Apple Silicon Chip (M-Prozessoren) des Nutzers. Kein
+                                Audio-Schnipsel verlässt jemals den Mac.
+                                Wähle zwischen absoluter Privatsphäre offline oder der blitzschnellen API.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Target Audience -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-6">🎯 Wer braucht Flowen?</h2>
+                        <ul class="text-neutral-400 space-y-4 text-sm">
+                            <li class="flex items-start gap-3">
+                                <span class="text-cyan-500 mt-1">1</span>
+                                <span><strong>Anwälte, Ärzte & Therapeuten:</strong> Müssen viele Dokumente und
+                                    Aktennotizen verfassen, unterliegen aber strengen Datenschutzrichtlinien. Das lokale
+                                    Modell ist ein Gamechanger.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cyan-500 mt-1">2</span>
+                                <span><strong>Entwickler & Copywriter:</strong> Die viel am PC schreiben und ihre
+                                    Gedanken oft schneller aussprechen können, als sie tippen.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cyan-500 mt-1">3</span>
+                                <span><strong>Manager & Berater:</strong> Die tagtäglich endlose E-Mails,
+                                    Slack-Nachrichten und Strategie-Papiere verfassen und durch Sprechen massiv Zeit
+                                    sparen möchten.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-cyan-500 mt-1">4</span>
+                                <span><strong>Jeder Mac-User:</strong> Jeder, der das beeindruckende Level von
+                                    ChatGPT/Whisper in jedem beliebigen Mac-Programm nutzen möchte.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="privacy.html"
+                    class="text-sm text-neutral-500 hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="../legal/impressum.html"
+                    class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
