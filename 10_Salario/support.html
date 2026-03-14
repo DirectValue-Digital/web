@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salario Support – Wir sind für dich da! - DirectValue Digital</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 500: '#10b981', 600: '#059669' } },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-gradient-emerald {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-emerald-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div
+                    class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
+                </div>
+                <span
+                    class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">DirectValue
+                    Digital</span>
+            </a>
+
+            <a href="index.html"
+                class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
+                ← Zurück
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-40 pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                    Salario Support – <span class="text-gradient-emerald">Wir sind für dich da!</span>
+                </h1>
+                <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                    Willkommen im Support-Bereich von Salario. Hast du Fragen zur Brutto-Netto-Berechnung, zu Funktionen wie dem Firmenwagen-Rechner oder benötigst du technische Hilfe mit der App? Hier findest du Antworten auf die häufigsten Fragen und Möglichkeiten, unser Team zu kontaktieren.
+                </p>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mb-24">
+                <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm">?</span>
+                    Häufig gestellte Fragen (FAQ)
+                </h2>
+
+                <div class="space-y-6">
+                    <!-- FAQ 1 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. Wie genau sind die Berechnungen von Salario?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Salario verwendet die offiziellen Berechnungsvorgaben und stets die aktuellsten Steuer- und Sozialversicherungsparameter des Bundesministeriums der Finanzen. Die Ergebnisse sind sehr präzise und eignen sich ideal zur Planung und für Gehaltsverhandlungen. Bitte beachte jedoch, dass die App keine rechtsverbindliche Steuerberatung ersetzt.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Was passiert mit meinen eingegebenen Daten?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Deine Datensicherheit hat höchste Priorität. Alle von dir eingegebenen Gehalts- und Steuerdaten werden ausschließlich lokal auf deinem Gerät gespeichert. Wir haben keinen Zugriff auf deine Finanzdaten und sie werden nicht auf externe Server hochgeladen.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. Wie berechne ich die 0,03%- oder 0,002%-Regelung beim Dienstwagen?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Gehe in deinem Szenario auf den Bereich Dienstwagen. Aktiviere den Schalter "Firmenwagen" und wähle unter Versteuerung Arbeitsweg die gewünschte Methode aus. Für die 0,002%-Regelung (Einzelbewertung) musst du zusätzlich die Anzahl der monatlichen Fahrten ins Büro (Tage) angeben. Salario berechnet den geldwerten Vorteil dann automatisch korrekt.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Kann ich auch ein Dienstfahrrad (Jobrad) mitberechnen?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Ja! Aktiviere im jeweiligen Gehalts-Szenario einfach die Option "Firmenrad". Du kannst dort den Listenpreis, die monatliche Leasingrate und einen eventuellen Arbeitgeberzuschuss eintragen. Salario zeigt dir direkt, wie sich das auf dein Nettoeinkommen auswirkt.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">5. Wie kann ich verschiedene Jobangebote miteinander vergleichen?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Du kannst im Bereich Szenarien beliebig viele Profile anlegen (z.B. "Jobangebot A" und "Bestehender Job"). Jedes Szenario kann unterschiedliche Bruttogehälter, Arbeitszeiten oder Zusatzleistungen enthalten. In der direkten Vergleichsansicht siehst du dann übersichtlich, wo dir am Ende des Monats mehr Netto bleibt.
+                        </p>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">6. Meine App stürzt ab oder funktioniert nicht richtig. Was kann ich tun?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Bitte stelle sicher, dass du die aktuellste Version der Salario-App aus dem App Store geladen hast und dein iOS auf dem neuesten Stand ist. Sollte das Problem weiterhin bestehen, kontaktiere bitte unseren Support (siehe unten).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="glass-card rounded-[2.5rem] p-10 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                
+                <h2 class="text-3xl font-bold text-white mb-8 relative z-10">Benötigst du weitere Hilfe?</h2>
+                <p class="text-neutral-400 mb-10 relative z-10 leading-relaxed">
+                    Hast du in unseren FAQs nicht die passende Antwort gefunden? Unser Support-Team hilft dir gerne persönlich weiter.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 relative z-10">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">So erreichst du uns:</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-white">E-Mail-Support</p>
+                                    <p class="text-sm text-neutral-400">Sende uns eine E-Mail an <a href="mailto:contact@directvalue-digital.de" class="text-emerald-500 hover:underline">contact@directvalue-digital.de</a> – wir bemühen uns, alle Anfragen innerhalb von 24 bis 48 Stunden zu beantworten.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-emerald-400">Feedback & Wünsche:</h3>
+                        <p class="text-sm text-neutral-400 leading-relaxed">
+                            Du hast eine Idee, wie wir Salario noch besser machen können? Oder dir fehlt eine bestimmte Funktion (z.B. ein spezieller Freibetrag)? Schreib uns gerne! Wir entwickeln die App ständig basierend auf dem Feedback unserer Nutzer weiter.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="privacy.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="../legal/impressum.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
