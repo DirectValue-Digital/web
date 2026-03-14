@@ -44,6 +44,26 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Form Elements */
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(16, 185, 129, 0.5);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+        }
     </style>
 </head>
 
@@ -150,27 +170,64 @@
                     Hast du in unseren FAQs nicht die passende Antwort gefunden? Unser Support-Team hilft dir gerne persönlich weiter.
                 </p>
 
-                <div class="grid md:grid-cols-2 gap-8 relative z-10">
-                    <div class="space-y-4">
-                        <h3 class="text-xl font-bold text-emerald-400">So erreichst du uns:</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-white">E-Mail-Support</p>
-                                    <p class="text-sm text-neutral-400">Sende uns eine E-Mail an <a href="mailto:contact@directvalue-digital.de" class="text-emerald-500 hover:underline">contact@directvalue-digital.de</a> – wir bemühen uns, alle Anfragen innerhalb von 24 bis 48 Stunden zu beantworten.</p>
-                                </div>
+                <div class="space-y-12 relative z-10">
+                    <!-- Contact Form -->
+                    <form action="mailto:contact@directvalue-digital.de" method="POST" enctype="text/plain" class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Dein Name</label>
+                                <input type="text" id="name" name="Name" class="form-input" required placeholder="Name">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">E-Mail Adresse</label>
+                                <input type="email" id="email" name="Email" class="form-input" required placeholder="beispiel@mail.de">
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Betreff</label>
+                                <input type="text" id="subject" name="Betreff" class="form-input" required placeholder="Thema deiner Anfrage" value="Salario Support">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="space-y-4">
-                        <h3 class="text-xl font-bold text-emerald-400">Feedback & Wünsche:</h3>
-                        <p class="text-sm text-neutral-400 leading-relaxed">
-                            Du hast eine Idee, wie wir Salario noch besser machen können? Oder dir fehlt eine bestimmte Funktion (z.B. ein spezieller Freibetrag)? Schreib uns gerne! Wir entwickeln die App ständig basierend auf dem Feedback unserer Nutzer weiter.
-                        </p>
+                        <div class="flex flex-col">
+                            <label for="message" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Deine Nachricht</label>
+                            <textarea id="message" name="Nachricht" rows="6" class="form-input resize-none h-full" required placeholder="Wie können wir dir helfen?"></textarea>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <button type="submit"
+                                class="w-full py-4 bg-emerald-500/10 hover:bg-emerald-500/20 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 border border-emerald-500/20 group">
+                                <span>Anfrage senden</span>
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                            <p class="text-xs text-neutral-500 text-center mt-3 italic">Öffnet dein Standard-E-Mail-Programm</p>
+                        </div>
+                    </form>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-white/5 w-full"></div>
+
+                    <!-- Bot Protection Section -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-emerald-400">So erreichst du uns direkt:</h3>
+                            <p class="text-sm text-neutral-400">
+                                Falls du kein E-Mail-Programm installiert hast, kannst du uns auch direkt eine Nachricht an unsere Adresse schreiben:
+                            </p>
+                            <div class="inline-block p-1 bg-white/5 rounded-lg">
+                                <img src="../assets/contact_email.png" alt="Support E-Mail" class="h-8 md:h-10 opacity-80">
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-emerald-400">Feedback & Wünsche:</h3>
+                            <p class="text-sm text-neutral-400 leading-relaxed">
+                                Du hast eine Idee für Salario oder dir fehlt eine bestimmte Funktion (z.B. ein spezieller Freibetrag)? Schreib uns gerne! Wir entwickeln die App ständig basierend auf dem Feedback unserer Nutzer weiter.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
