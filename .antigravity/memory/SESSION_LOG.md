@@ -11,3 +11,4 @@
 - `2026-06-21 13:55` Monitor-Koffein Icon durch korrekte Datei icon_monitor-koffein.png ersetzt und Referenzen aktualisiert
 - `2026-06-21 13:59` Monitor-Koffein Datenschutzerklärung (privacy.html) zweisprachig (DE & EN) überarbeitet
 - `2026-06-21 14:01` Support-E-Mail auf contact@directvalue-digital.de in Monitor-Koffein Seiten geändert
+- `2026-06-21 14:03` Redundanten CTA-Kasten am Ende der Monitor-Koffein Landingpage (index.html) entfernt

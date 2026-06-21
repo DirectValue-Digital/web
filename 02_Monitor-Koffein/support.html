@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - Monitor-Koffein</title>
-    <link class="w-14 h-14" rel="icon" href="../assets/logo.jpg">
+    <link rel="icon" href="../assets/logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
@@ -18,7 +18,7 @@
                         display: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        brand: { 500: '#d97706', 600: '#b45309' },
+                        brand: { 500: '#d97706', 600: '#b45309' } /* Amber/Coffee Accents */
                     }
                 }
             }
@@ -30,118 +30,150 @@
             color: #e5e5e5;
         }
 
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card {
+        .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .form-input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 1rem;
-            padding: 1rem 1.25rem;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(217, 119, 6, 0.5);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.15);
+        .text-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 
-<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-amber-500/30">
+<body class="antialiased min-h-screen flex flex-col font-sans">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3 group">
-                <div class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
-                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
-                </div>
-                <span class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">Monitor-Koffein</span>
+                <img src="../assets/logo.jpg" alt="DirectValue Digital" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white">Monitor-Koffein</span>
             </a>
-
-            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
-                ← Zurück zur App
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Back to App / Zurück zur App
             </a>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-36 pb-20">
-        <div class="max-w-2xl mx-auto px-6 space-y-10">
+    <main class="flex-grow pt-40 pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
 
-            <div class="text-center space-y-4">
-                <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white">App Support</h1>
-                <div class="space-y-1 text-sm text-neutral-400">
-                    <p>Haben Sie Fragen oder benötigen Sie Hilfe bei der Nutzung von Monitor-Koffein?</p>
-                    <p class="text-xs text-neutral-500 font-light">Do you have questions or need assistance with Monitor-Koffein?</p>
+            <!-- ENGLISH SECTION -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Monitor-Koffein Support – <span class="text-gradient">We are here for you!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Welcome to the Monitor-Koffein support area. Do you have questions about preventing sleep on macOS, configuring startup settings, or sandboxing? Here you'll find answers to common questions.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. How does Monitor-Koffein prevent sleep?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            The App registers an assertion with macOS using the IOKit API (specifically <code>kIOPMAssertionTypeNoDisplaySleep</code>) to signal to the operating system that the display and system must stay active. Once you deactivate the timer or close the app, this assertion is clean released.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Does the app run quietly in the background?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Yes, Monitor-Koffein runs efficiently as a menu bar application in macOS. It does not display a dock icon or launch a heavy window interface, staying completely out of your way.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. How does the Autostart feature work?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            We use the modern macOS <code>ServiceManagement</code> framework (via <code>SMAppService.mainApp</code>) to register the app as a login item. This avoids old helper application setups and aligns with modern macOS security policies.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Is my privacy protected?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Absolutely. The App is fully sandboxed (<code>ENABLE_APP_SANDBOX = YES</code>), runs 100% offline, collects no data, contains no trackers, and never makes a network request. All configurations are stored locally on your Mac.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="glass-card rounded-3xl p-8 md:p-10">
-                <form action="mailto:contact@directvalue-digital.de" method="POST" enctype="text/plain" class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Name <span class="text-neutral-500 font-normal">| Name</span></label>
-                        <input type="text" id="name" name="Name" class="form-input" required placeholder="Ihr Name | Your name">
+            <!-- SEPARATOR -->
+            <div class="my-16 border-t border-white/5"></div>
+
+            <!-- GERMAN SECTION -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Monitor-Koffein Support – <span class="text-gradient">Wir sind für Sie da!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Willkommen im Support-Bereich von Monitor-Koffein. Haben Sie Fragen zum Verhindern des Ruhezustands, zum automatischen Start oder zur Datensicherheit? Hier finden Sie die Antworten auf die häufigsten Fragen.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. Wie verhindert Monitor-Koffein den Ruhezustand des Mac?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Die App registriert eine Anforderung (Assertion) bei macOS über die IOKit-API (speziell <code>kIOPMAssertionTypeNoDisplaySleep</code>), um dem Betriebssystem zu signalisieren, dass der Monitor aktiv bleiben muss. Sobald die App deaktiviert oder geschlossen wird, wird diese Assertion sauber freigegeben.
+                        </p>
                     </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">E-Mail <span class="text-neutral-500 font-normal">| Email</span></label>
-                        <input type="email" id="email" name="Email" class="form-input" required placeholder="ihre.email@beispiel.de | your.email@example.com">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Läuft die App unbemerkt im Hintergrund?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Ja, Monitor-Koffein läuft äußerst ressourcenschonend als reines Symbol in der macOS-Menüleiste. Es gibt kein störendes Dock-Icon und kein großes Programmfenster, das Ihre Arbeit unterbricht.
+                        </p>
                     </div>
-
-                    <div>
-                        <label for="subject" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Betreff <span class="text-neutral-500 font-normal">| Subject</span></label>
-                        <input type="text" id="subject" name="Betreff" class="form-input" required placeholder="Worum geht es? | What is this about?" value="Monitor-Koffein Support">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. Wie funktioniert der automatische Start (Autostart)?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Wir nutzen das moderne macOS <code>ServiceManagement</code>-Framework (über <code>SMAppService.mainApp</code>), um die App als Anmeldeobjekt zu registrieren. Das vermeidet veraltete Hilfs-Apps und entspricht den modernen macOS-Sicherheitsrichtlinien.
+                        </p>
                     </div>
-
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Nachricht <span class="text-neutral-500 font-normal">| Message</span></label>
-                        <textarea id="message" name="Nachricht" rows="6" class="form-input resize-none" required placeholder="Bitte beschreiben Sie Ihr Anliegen zur Monitor-Koffein App... | Please describe your inquiry regarding the Monitor-Koffein app..."></textarea>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Sind meine Daten in der App sicher?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Absolut. Die App läuft vollständig isoliert in der App Sandbox (<code>ENABLE_APP_SANDBOX = YES</code>), arbeitet 100 % offline, erfasst keine Daten, enthält keine Werbe-Tracker und baut niemals Netzwerkverbindungen auf.
+                        </p>
                     </div>
-
-                    <button type="submit" class="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-4 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                        <span>Nachricht senden / Send Message</span>
-                        <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </button>
-                    <p class="text-xs text-neutral-500 text-center mt-3">Öffnet Ihr Standard-E-Mail-Programm / Opens your default email client.</p>
-                </form>
-
-                <div class="mt-10 pt-8 border-t border-white/10 text-center">
-                    <p class="text-neutral-400 text-sm mb-1">Oder schreiben Sie uns direkt eine E-Mail an:</p>
-                    <p class="text-neutral-500 text-xs mb-3">Or write us an email directly to:</p>
-                    <a href="mailto:contact@directvalue-digital.de" class="text-lg font-medium text-amber-400 hover:text-amber-500 transition-colors">
-                        contact@directvalue-digital.de
-                    </a>
                 </div>
             </div>
+
+            <!-- Contact Section -->
+            <section class="glass rounded-[2.5rem] p-10 md:p-12 relative overflow-hidden">
+                <h2 class="text-3xl font-bold text-white mb-8">Need more help? / Brauchen Sie Hilfe?</h2>
+                <p class="text-neutral-400 mb-10 leading-relaxed">
+                    If you haven't found the answer you're looking for, please contact our support team. / Falls Sie keine Antwort auf Ihre Frage gefunden haben, kontaktieren Sie uns gerne direkt per E-Mail.
+                </p>
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-medium text-white">Email Support</p>
+                        <p class="text-sm text-neutral-400">
+                            <a href="mailto:contact@directvalue-digital.de" class="text-amber-500 hover:underline">contact@directvalue-digital.de</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
-        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="privacy.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Datenschutzerklärung</a>
-                <a href="../legal/impressum.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-neutral-500 text-sm">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-8 text-sm text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutzerklärung</a>
             </div>
         </div>
     </footer>
