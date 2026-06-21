@@ -8,3 +8,4 @@
 - `2026-06-21 13:33` Projekt initialisiert unter Rolle: Web Specialist Agent
 - `2026-06-21 13:36` Entwicklungs- und Deployment-Leitfaden DEVELOPMENT_GUIDE.md erstellt
 - `2026-06-21 13:51` Monitor-Koffein Webseiten (index, privacy, support) erstellt und ins Hauptportal integriert
+- `2026-06-21 13:55` Monitor-Koffein Icon durch korrekte Datei icon_monitor-koffein.png ersetzt und Referenzen aktualisiert
