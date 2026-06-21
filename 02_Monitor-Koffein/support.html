@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Monitor-Koffein</title>
+    <link class="w-14 h-14" rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 500: '#d97706', 600: '#b45309' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(217, 119, 6, 0.5);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.15);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-amber-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
+                </div>
+                <span class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">Monitor-Koffein</span>
+            </a>
+
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
+                ← Zurück zur App
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-36 pb-20">
+        <div class="max-w-2xl mx-auto px-6 space-y-10">
+
+            <div class="text-center space-y-4">
+                <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white">App Support</h1>
+                <div class="space-y-1 text-sm text-neutral-400">
+                    <p>Haben Sie Fragen oder benötigen Sie Hilfe bei der Nutzung von Monitor-Koffein?</p>
+                    <p class="text-xs text-neutral-500 font-light">Do you have questions or need assistance with Monitor-Koffein?</p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 md:p-10">
+                <form action="mailto:support@directvalue.de" method="POST" enctype="text/plain" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Name <span class="text-neutral-500 font-normal">| Name</span></label>
+                        <input type="text" id="name" name="Name" class="form-input" required placeholder="Ihr Name | Your name">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">E-Mail <span class="text-neutral-500 font-normal">| Email</span></label>
+                        <input type="email" id="email" name="Email" class="form-input" required placeholder="ihre.email@beispiel.de | your.email@example.com">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Betreff <span class="text-neutral-500 font-normal">| Subject</span></label>
+                        <input type="text" id="subject" name="Betreff" class="form-input" required placeholder="Worum geht es? | What is this about?" value="Monitor-Koffein Support">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-neutral-300 mb-2 pl-2">Nachricht <span class="text-neutral-500 font-normal">| Message</span></label>
+                        <textarea id="message" name="Nachricht" rows="6" class="form-input resize-none" required placeholder="Bitte beschreiben Sie Ihr Anliegen zur Monitor-Koffein App... | Please describe your inquiry regarding the Monitor-Koffein app..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-4 border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <span>Nachricht senden / Send Message</span>
+                        <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                    <p class="text-xs text-neutral-500 text-center mt-3">Öffnet Ihr Standard-E-Mail-Programm / Opens your default email client.</p>
+                </form>
+
+                <div class="mt-10 pt-8 border-t border-white/10 text-center">
+                    <p class="text-neutral-400 text-sm mb-1">Oder schreiben Sie uns direkt eine E-Mail an:</p>
+                    <p class="text-neutral-500 text-xs mb-3">Or write us an email directly to:</p>
+                    <a href="mailto:support@directvalue.de" class="text-lg font-medium text-amber-400 hover:text-amber-500 transition-colors">
+                        support@directvalue.de
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="privacy.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="../legal/impressum.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

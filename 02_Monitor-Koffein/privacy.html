@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung - Monitor-Koffein</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 500: '#d97706', 600: '#b45309' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-amber-500/30">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="relative w-10 h-10 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="object-cover w-full h-full">
+                </div>
+                <span class="font-semibold text-lg tracking-tight text-white/90 group-hover:text-white transition-colors">Monitor-Koffein</span>
+            </a>
+
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 hover:bg-white/5 rounded-lg">
+                ← Zurück zur App
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-36 pb-20">
+        <div class="max-w-3xl mx-auto px-6">
+            
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-display font-extrabold text-white mb-4">Datenschutzerklärung</h1>
+                <p class="text-neutral-400">App: Monitor-Koffein</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 md:p-12 space-y-8 text-neutral-300 leading-relaxed text-sm">
+                <p class="text-base text-neutral-200">
+                    Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Die App „Monitor-Koffein“ (nachfolgend „App“) wurde nach dem Prinzip der Datenvermeidung und Datensparsamkeit entwickelt.
+                </p>
+
+                <hr class="border-white/5">
+
+                <section class="space-y-3">
+                    <h2 class="text-xl font-display font-bold text-white">1. Erhebung und Verarbeitung personenbezogener Daten</h2>
+                    <p>
+                        Die App erhebt, speichert, verarbeitet oder überträgt keinerlei personenbezogene Daten, Nutzungsdaten oder Telemetriedaten.
+                    </p>
+                </section>
+
+                <hr class="border-white/5">
+
+                <section class="space-y-3">
+                    <h2 class="text-xl font-display font-bold text-white">2. Netzwerkverbindungen und Datenübermittlung</h2>
+                    <p>
+                        Die App ist eine reine Offline-Anwendung. Sie baut keine Internet- oder Netzwerkverbindungen auf und kommuniziert nicht mit externen Servern. Es findet keine Übermittlung von Daten an den Entwickler oder Dritte statt.
+                    </p>
+                </section>
+
+                <hr class="border-white/5">
+
+                <section class="space-y-3">
+                    <h2 class="text-xl font-display font-bold text-white">3. Zugriff auf Geräteressourcen und Berechtigungen</h2>
+                    <p>
+                        Die App läuft innerhalb der gesicherten macOS App Sandbox. Sie fordert keine Berechtigungen für sensible Systemkomponenten (wie Standort, Kamera, Mikrofon, Kontakte oder Fotos) an. Die App greift ausschließlich auf folgende System-APIs von macOS zu:
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-2">
+                        <li>
+                            <strong>IOKit (Power Management):</strong> Zum vorübergehenden Verhindern des Ruhezustands des Bildschirms, solange die App vom Nutzer aktiviert ist.
+                        </li>
+                        <li>
+                            <strong>ServiceManagement:</strong> Zur optionalen Registrierung der App als Startobjekt (Autostart bei der Anmeldung), sofern der Nutzer dies in den Einstellungen der App explizit aktiviert.
+                        </li>
+                    </ul>
+                </section>
+
+                <hr class="border-white/5">
+
+                <section class="space-y-3">
+                    <h2 class="text-xl font-display font-bold text-white">4. Lokale Speicherung</h2>
+                    <p>
+                        Es werden keine persönlichen Daten oder Profile lokal auf Ihrem Gerät gespeichert. Lediglich die vom Nutzer gewählten Einstellungen (z. B. ob die App beim Systemstart automatisch geladen werden soll) werden über die macOS-Systemdienste gesichert.
+                    </p>
+                </section>
+
+                <hr class="border-white/5">
+
+                <section class="space-y-3">
+                    <h2 class="text-xl font-display font-bold text-white">5. Ihre Rechte</h2>
+                    <p>
+                        Da wir keine Daten von Ihnen verarbeiten, gibt es keine Daten, die wir ausgeben, berichtigen oder löschen könnten. Bei Fragen zur App oder zur Sicherheit können Sie uns unter <a href="mailto:support@directvalue.de" class="text-amber-400 hover:underline">support@directvalue.de</a> kontaktieren.
+                    </p>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 w-full border-t border-white/5 bg-black/50 backdrop-blur-xl mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-500">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="index.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Startseite</a>
+                <a href="../legal/impressum.html" class="text-sm text-neutral-500 hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
