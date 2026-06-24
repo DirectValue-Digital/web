@@ -5,3 +5,5 @@
 - `2026-06-21` Project initialized: 06_DIRECTVALUE-DIGITAL
 - `2026-06-21` Projekt läuft mit Profil: Web Specialist Agent
 - `2026-06-21` Monitor-Koffein: Projekt 02 als Unterordner hinzugefügt und in Root-Landingpage verlinkt
+- `2026-06-24` Projekt-Struktur: 12_Target_Walk als statisches HTML integriert
+- `2026-06-24` Projekt-Struktur: 12_Target_Walk Dashboard-Mockup entspricht der SwiftUI-Implementierung

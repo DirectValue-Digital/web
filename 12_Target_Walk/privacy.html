@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung / Privacy Policy - Target Walk</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #a3a3a3;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white">Target Walk</span>
+            </a>
+            <a href="index.html" class="text-sm text-neutral-400 hover:text-white transition-colors">
+                ← Zurück zur App-Seite
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 pt-36 pb-20 flex-grow">
+        
+        <!-- GERMAN SECTION -->
+        <h1 class="text-3xl font-display font-bold text-white mb-2">Datenschutzerklärung</h1>
+        <p class="mb-8 text-sm text-neutral-500">Gültig für Nutzer der App Target Walk.</p>
+
+        <div class="space-y-8 text-sm leading-relaxed text-neutral-400">
+            <p>Der Schutz Ihrer persönlichen Daten hat für uns höchste Priorität. Target Walk wurde so entwickelt, dass Ihre Privatsphäre standardmäßig geschützt ist. Nachfolgend informieren wir Sie über den Umgang mit Daten in unserer App.</p>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">1. Grundsatz: 100% Offline (Privacy by Design)</h2>
+                <p>
+                    Target Walk benötigt <strong>keine Internetverbindung</strong> und besitzt keine Berechtigungen, um Daten über das Internet zu übertragen. Es findet keinerlei Datenübertragung an uns, an Werbenetzwerke oder an Drittanbieter-Server statt. 
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">2. HealthKit-Integration</h2>
+                <p>
+                    Die App basiert auf dem Apple HealthKit Framework. Mit Ihrer ausdrücklichen Erlaubnis greift Target Walk auf Gesundheitsdaten zu, um Ihre tägliche Schrittzahl anzuzeigen und Workouts zu tracken:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>iPhone App (Lesen):</strong> Schrittzahl (HKQuantityType.stepCount).</li>
+                    <li><strong>iPhone App (Schreiben):</strong> Speichern von Trainingseinheiten (HKWorkoutType).</li>
+                    <li><strong>Apple Watch App (Lesen):</strong> Schrittzahl, aktive Energie (Kalorien), Herzfrequenz, Trainingseinheiten.</li>
+                    <li><strong>Apple Watch App (Schreiben):</strong> Aktive Energie (Kalorien), Trainingseinheiten.</li>
+                </ul>
+                <p class="mt-2">
+                    Die Schrittdaten werden ausschließlich <strong>live aus HealthKit gelesen</strong> und nicht dauerhaft in der App gespeichert. Der Zugriff kann von Ihnen jederzeit in den iOS-Systemeinstellungen unter „Datenschutz & Sicherheit“ &gt; „Health“ widerrufen werden.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">3. Datenspeicherung</h2>
+                <p>
+                    Die App speichert Daten ausschließlich lokal auf Ihrem Gerät:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>SwiftData (SQLite-Datenbank):</strong> Speichert ausschließlich Ihre selbst festgelegten Zielwerte für Bronze, Silber und Gold. Diese verbleiben verschlüsselt auf Ihrem Gerät.</li>
+                    <li><strong>UserDefaults:</strong> Speichert Ihren Onboarding-Status, die Anzahl der gewählten Erfolgstage pro Woche sowie Ihre gewählte Streak-Zielstufe.</li>
+                    <li><strong>App Groups (Gemeinsamer Cache):</strong> Ein geteilter lokaler Speicherbereich (UserDefaults) wird genutzt, um aktuelle Schrittdaten an das Apple Watch Zifferblatt-Widget (Komplikation) zu übertragen.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">4. Lokale Kommunikation (WatchConnectivity)</h2>
+                <p>
+                    Die Synchronisation zwischen iPhone und Apple Watch erfolgt ausschließlich lokal über Bluetooth und WLAN mittels Apples <strong>WatchConnectivity</strong>. Es findet kein Routing über das Internet statt.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">5. Keine Analysen, Werbung oder Konten</h2>
+                <p>
+                    Es gibt keine Benutzerregistrierung, keinen Login und wir erheben keine Profile. Die App enthält keine Analyse-Tools (wie Google Analytics, Firebase oder Crashlytics) und keine Werbesoftware.
+                </p>
+            </section>
+
+            <section class="pt-8 border-t border-neutral-800">
+                <h2 class="text-white font-semibold mb-2">Kontakt bei Fragen</h2>
+                <p>
+                    Bei Fragen zum Datenschutz wenden Sie sich bitte an:<br>
+                    E-Mail: <a href="mailto:contact@directvalue-digital.de" class="text-blue-500 hover:underline">contact@directvalue-digital.de</a>
+                </p>
+            </section>
+        </div>
+
+        <!-- SEPARATOR -->
+        <div class="my-16 border-t border-white/5"></div>
+
+        <!-- ENGLISH SECTION -->
+        <h1 class="text-3xl font-display font-bold text-white mb-2">Privacy Policy</h1>
+        <p class="mb-8 text-sm text-neutral-500">Effective for users of the Target Walk app.</p>
+
+        <div class="space-y-8 text-sm leading-relaxed text-neutral-400">
+            <p>Protecting your personal data is our highest priority. Target Walk is built with privacy by design. Below, we inform you about how data is processed in our application.</p>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">1. Principle: 100% Offline (Privacy by Design)</h2>
+                <p>
+                    Target Walk does <strong>not require an internet connection</strong> and does not have permission to transmit data over the internet. No data is sent to us, to advertising networks, or to third-party servers.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">2. HealthKit Integration</h2>
+                <p>
+                    The app integrates with Apple's HealthKit framework. With your explicit consent, Target Walk accesses health data to display your daily step counts and track your workouts:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>iPhone App (Read):</strong> Step count (HKQuantityType.stepCount).</li>
+                    <li><strong>iPhone App (Write):</strong> Recording workout sessions (HKWorkoutType).</li>
+                    <li><strong>Apple Watch App (Read):</strong> Step count, active energy (calories), heart rate, workouts.</li>
+                    <li><strong>Apple Watch App (Write):</strong> Active energy (calories), workouts.</li>
+                </ul>
+                <p class="mt-2">
+                    Step data is read <strong>live from HealthKit</strong> and is not permanently stored inside the app. You can revoke permissions at any time in the iOS system settings under "Privacy & Security" &gt; "Health".
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">3. Data Storage</h2>
+                <p>
+                    All app data is stored strictly locally on your end device:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><strong>SwiftData (SQLite Database):</strong> Saves only your customized Bronze, Silver, and Gold targets. These remain encrypted on your device.</li>
+                    <li><strong>UserDefaults:</strong> Stores your onboarding status, your weekly target days, and your selected streak target tier.</li>
+                    <li><strong>App Groups (Shared Cache):</strong> A shared local container (UserDefaults) is used to pass step count data to the Apple Watch face widget (complication).</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">4. Local Communication (WatchConnectivity)</h2>
+                <p>
+                    Synchronization between your iPhone and Apple Watch is handled exclusively locally via Bluetooth and Wi-Fi using Apple's <strong>WatchConnectivity</strong>. No routing through the internet is performed.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-white font-semibold mb-2">5. No Analytics, Ads, or Accounts</h2>
+                <p>
+                    There are no user registrations, no logins, and no user profiles. The app does not contain analytics tools (such as Google Analytics, Firebase, or Crashlytics) and no advertising SDKs.
+                </p>
+            </section>
+
+            <section class="pt-8 border-t border-neutral-800">
+                <h2 class="text-white font-semibold mb-2">Contact</h2>
+                <p>
+                    If you have any questions regarding this privacy policy, please contact us at:<br>
+                    E-Mail: <a href="mailto:contact@directvalue-digital.de" class="text-blue-500 hover:underline">contact@directvalue-digital.de</a>
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-neutral-500">
+            <p>© 2026 DirectValue Digital. Alle Rechte vorbehalten. / All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Target Walk</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 500: '#3b82f6', 600: '#2563eb' },
+                        bronze: { 500: '#cd7f32' },
+                        gold: { 500: '#ffd700' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffd700 0%, #cd7f32 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white">Target Walk</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Back / Zurück
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-36 pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+
+            <!-- ENGLISH SECTION -->
+            <div class="mb-20">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Target Walk Support – <span class="text-gradient">We are here for you!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Welcome to the Target Walk support area. Do you have questions about the three-tier goal system, HealthKit authorization, or need technical help? Here you'll find answers to common questions.
+                    </p>
+                </div>
+
+                <!-- FAQ List English -->
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-display font-bold text-white mb-6">Frequently Asked Questions (FAQ)</h2>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. Why are my steps not being counted or displayed?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Target Walk requires access to your Apple HealthKit data. If you denied access during the first launch, you can enable it manually at any time in iOS Settings under <strong>Privacy & Security &gt; Health &gt; Target Walk</strong>. Make sure read access for "Steps" is enabled.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. How does the Apple Watch sync with the iPhone?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Sync is done locally via Bluetooth and Wi-Fi using Apple's WatchConnectivity framework. Make sure Bluetooth is enabled on both devices and they are within range. Workouts tracked on the Watch will transfer automatically when connected.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. How does the Three-Tier Goal System and the weekly success work?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            You can set three daily step goals (Bronze, Silver, Gold) using the sliders on the dashboard. Your streak and weekly success are based on reaching your Silver goal. In the settings, you can configure how many days a week you want to reach Silver and Gold. The Bronze goal is fixed at 7/7 days.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Is my fitness data stored on a server?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            No. Target Walk is a completely offline app. Your step data remains in Apple's encrypted HealthKit. Your goal configurations are stored locally on your iPhone using SwiftData. We do not collect, transmit, or store any of your data on external servers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEPARATOR -->
+            <div class="my-16 border-t border-white/5"></div>
+
+            <!-- GERMAN SECTION -->
+            <div class="mb-20">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Target Walk Support – <span class="text-gradient">Wir sind für dich da!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Willkommen im Support-Bereich von Target Walk. Hast du Fragen zum Drei-Stufen-Zielsystem, zur HealthKit-Verbindung oder benötigst du technische Hilfe? Hier findest du Antworten auf die häufigsten Fragen.
+                    </p>
+                </div>
+
+                <!-- FAQ List German -->
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-display font-bold text-white mb-6">Häufig gestellte Fragen (FAQ)</h2>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. Warum werden meine Schritte nicht gezählt oder angezeigt?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Target Walk benötigt Zugriff auf deine Apple HealthKit-Daten. Wenn du beim ersten Start den Zugriff abgelehnt hast, kannst du ihn jederzeit in den iOS-Einstellungen unter <strong>Datenschutz & Sicherheit &gt; Health &gt; Target Walk</strong> manuell aktivieren. Stelle sicher, dass der Lesezugriff für "Schritte" aktiviert ist.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Wie synchronisiert sich die Apple Watch mit dem iPhone?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Die Synchronisation erfolgt lokal über Bluetooth und WLAN mittels Apples WatchConnectivity. Vergewissere dich, dass Bluetooth auf beiden Geräten eingeschaltet ist und sie sich in Reichweite befinden. Schritte, die du autark auf der Watch trackst, werden automatisch übertragen, sobald die Geräte verbunden sind.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. Wie funktioniert das Drei-Stufen-Zielsystem und das Wochenziel?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Du kannst über Schieberegler in der App drei verschiedene tägliche Schrittziele festlegen: Bronze (Mindestziel), Silber (Hauptziel) und Gold (Maximalziel). Deine Streak (Serie) und dein Wochenerfolg basieren auf dem Erreichen des Silber-Ziels. In den Einstellungen kannst du konfigurieren, an wie vielen Tagen pro Woche du das Silber- und Gold-Ziel erreichen möchtest. Das Bronze-Ziel ist fest auf 7 von 7 Tagen voreingestellt.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-white/5">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Werden meine Fitnessdaten auf einem Server gespeichert?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Nein. Target Walk ist eine reine Offline-App. Deine Schrittdaten verbleiben in Apples verschlüsseltem HealthKit. Deine Zielkonfigurationen werden über SwiftData lokal auf deinem iPhone gespeichert. Wir erheben, übertragen oder speichern keine deiner Daten auf externen Servern.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact/Email Section -->
+            <section class="glass rounded-[2.5rem] p-10 md:p-12 border border-white/5 shadow-2xl relative overflow-hidden text-center">
+                <div class="absolute -right-16 -top-16 w-48 h-48 bg-gold-500/5 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-3xl font-display font-bold text-white mb-6">Need more help? / Brauchst du Hilfe?</h2>
+                <p class="text-neutral-400 mb-10 leading-relaxed max-w-xl mx-auto">
+                    If you haven't found the answer you're looking for, please contact our support team directly via email. / Falls du keine Antwort gefunden hast, kontaktiere bitte unser Support-Team direkt per E-Mail.
+                </p>
+                
+                <div class="flex flex-col items-center justify-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-400 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-white text-lg">Email Support</p>
+                        <p class="text-md mt-1">
+                            <a href="mailto:contact@directvalue-digital.de?subject=Target%20Walk%20Support" class="text-gold-400 hover:text-gold-500 transition-colors font-semibold">
+                                contact@directvalue-digital.de
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-neutral-500 text-sm">© 2026 DirectValue Digital. Alle Rechte vorbehalten. / All rights reserved.</p>
+            <div class="flex gap-8 text-sm text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

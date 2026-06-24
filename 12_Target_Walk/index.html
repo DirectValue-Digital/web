@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target Walk – Drei-Stufen-Schrittzähler für iPhone & Apple Watch</title>
+    <link rel="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 500: '#3b82f6', 600: '#2563eb' },
+                        bronze: { 400: '#d78f49', 500: '#cd7f32', 600: '#a05c1c' },
+                        silber: { 400: '#d1d1d1', 500: '#c0c0c0', 600: '#8e8e8e' },
+                        gold: { 400: '#ffe552', 500: '#ffd700', 600: '#cca300' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top center, rgba(205, 127, 50, 0.08) 0%, rgba(255, 215, 0, 0.03) 40%, transparent 80%);
+        }
+
+    </style>
+</head>
+
+<body class="antialiased font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white hidden sm:block">DirectValue Digital</span>
+            </a>
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="#features" class="text-neutral-400 hover:text-white transition-colors">Features</a>
+                <a href="#watch" class="text-neutral-400 hover:text-white transition-colors">Apple Watch</a>
+                <a href="#technical" class="text-neutral-400 hover:text-white transition-colors">Technik & Privacy</a>
+                <a href="support.html" class="text-neutral-400 hover:text-white transition-colors">Support</a>
+                <a href="privacy.html" class="text-neutral-400 hover:text-white transition-colors">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-28 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-display font-extrabold tracking-tight mb-8 leading-tight text-white">
+                Schritt-Tracking.<br>Neu definiert in <span class="bg-gradient-to-r from-bronze-400 via-silber-400 to-gold-400 bg-clip-text text-transparent">3 Stufen</span>.
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-12">
+                Erreiche deine Schritte-Ziele flexibel und spielerisch.
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-8 mb-8">
+                <img src="../assets/icon_target_walk.png" alt="Target Walk App Icon" class="w-32 h-32 md:w-44 md:h-44 rounded-[2.2rem] shadow-[0_0_50px_rgba(205,127,50,0.15)] border-4 border-white/10 hover:scale-105 transition-transform duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3-Stufen-Zielsystem Highlight -->
+    <section class="py-24 glass border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-4">Das Drei-Stufen-System</h2>
+                <p class="text-neutral-400 max-w-xl mx-auto">Keine starren Ziele mehr. Passe dein tägliches Schrittziel deiner Tagesform an.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Bronze -->
+                <div class="glass-card rounded-3xl p-8 border border-bronze-500/20 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-bronze-500/5 rounded-full blur-2xl group-hover:bg-bronze-500/10 transition-all"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-bronze-500/10 flex items-center justify-center text-bronze-400 mb-6 font-bold text-xl">
+                        ★
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Bronze-Ziel</h3>
+                    <p class="text-neutral-400 text-sm mb-4">Das tägliche Mindestziel für ruhigere Tage.</p>
+                    <div class="text-xs text-neutral-500 font-mono">1.000 – 15.000 Schritte<br>Standard: 5.000 Schritte</div>
+                </div>
+
+                <!-- Silber -->
+                <div class="glass-card rounded-3xl p-8 border border-silber-500/20 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-silber-500/5 rounded-full blur-2xl group-hover:bg-silber-500/10 transition-all"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-silber-500/10 flex items-center justify-center text-silber-400 mb-6 font-bold text-xl">
+                        ★★
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Silber-Ziel</h3>
+                    <p class="text-neutral-400 text-sm mb-4">Dein tägliches Hauptziel. Die Basis für Streak & Erfolge.</p>
+                    <div class="text-xs text-neutral-500 font-mono">2.000 – 25.000 Schritte<br>Standard: 10.000 Schritte</div>
+                </div>
+
+                <!-- Gold -->
+                <div class="glass-card rounded-3xl p-8 border border-gold-500/20 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-gold-500/5 rounded-full blur-2xl group-hover:bg-gold-500/10 transition-all"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-gold-500/10 flex items-center justify-center text-gold-400 mb-6 font-bold text-xl">
+                        ★★★
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Gold-Ziel</h3>
+                    <p class="text-neutral-400 text-sm mb-4">Für die Tage, an denen du über dich hinauswächst.</p>
+                    <div class="text-xs text-neutral-500 font-mono">3.000 – 30.000 Schritte<br>Standard: 15.000 Schritte</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">Features im Detail</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-bronze-500 via-silber-500 to-gold-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dashboard -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Intelligentes Dashboard</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Alles auf einen Blick: Übersichtliche Zielerreichungsanzeige mit genauen Zahlen für dein Silber-Ziel, visuelle Sterne bei Erreichen der Stufen, aktuelle Streak-Serie und das wöchentliche Balkendiagramm.
+                    </p>
+                </div>
+
+                <!-- Ziel-Anpassung -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Dynamische Schieberegler</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Passe die Ziele für Bronze, Silber und Gold jederzeit über Schieberegler direkt im Dashboard an. Alle Berechnungen und Ringe aktualisieren sich sofort.
+                    </p>
+                </div>
+
+                <!-- Wochenziel -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Konfigurierbare Woche</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Während Bronze an allen 7 Tagen erreicht werden muss, kannst du für Silber und Gold festlegen, an wie vielen Tagen der Woche du diese Stufen meistern möchtest.
+                    </p>
+                </div>
+
+                <!-- Historie -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ausführliche Historie</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Analysiere deine Leistung über Woche, Monat oder Jahr. Farblich codierte Diagramme zeigen genau, an welchen Tagen du welche Stufe erreicht hast. Inklusive Erfolgs-Medaille ab 80% Quote.
+                    </p>
+                </div>
+
+                <!-- iPhone Training -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Live Workout auf dem iPhone</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Starte Workouts wie "Gehen Outdoor", "Gehen Indoor" oder "Wandern". Echtzeit-Tracking über die iPhone-Sensoren, mit 50%-Meldung und automatischem Start der Apple Watch App.
+                    </p>
+                </div>
+
+                <!-- Apple Watch App -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Apple Watch Training</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Nutze das übersichtliche Setup-Frontend auf der Watch, um dein Training zu konfigurieren und zu starten (Sportart, Zielstufe und Schrittzahl). Erfasse Schritte, Herzfrequenz und Kalorien live beim Workout.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apple Watch Integration -->
+    <section id="watch" class="py-24 bg-neutral-900/20 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">Perfekt für die Apple Watch</h2>
+                    <p class="text-neutral-400 leading-relaxed mb-8">
+                        Target Walk wurde von Grund auf so konzipiert, dass die Apple Watch eine tragende Rolle spielt. Ob als autarkes Trainingsgerät oder als schneller Status-Blick auf dem Zifferblatt – die Integration ist nahtlos.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0 font-bold font-mono">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Schnellstart-Buttons</h4>
+                                <p class="text-neutral-400 text-sm">Füge im Training mit einem Tap +2.000 oder +5.000 Schritte hinzu, oder wähle das vom System berechnete, noch offene Delta zur Erreichung des gewählten Tagesziels.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0 font-bold font-mono">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Haptisches Feedback</h4>
+                                <p class="text-neutral-400 text-sm">Die Watch vibriert unaufdringlich bei der Hälfte des Ziels (50%) und bei erfolgreicher Zielerreichung.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0 font-bold font-mono">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">WidgetKit Komplikationen</h4>
+                                <p class="text-neutral-400 text-sm">Moderne Komplikationen für alle Zifferblatt-Arten. Farblich codiert (Orange wenn noch offen, Grün bei Erreichen) zeigen sie dir die Restschritte.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone App Dashboard Mockup (SwiftUI Layout Replica) -->
+                <div class="flex justify-center">
+                    <!-- iPhone device wrapper -->
+                    <div class="bg-[#050505] rounded-[3.2rem] p-4 max-w-[360px] w-full border-[6px] border-neutral-800 shadow-2xl shadow-neutral-950/80 relative">
+                        <!-- iPhone Notch/Island element -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-b-2xl border-x border-b border-neutral-900 z-20"></div>
+                        
+                        <!-- Scrollable SwiftUI Viewport -->
+                        <div class="bg-[#121214] rounded-[2.5rem] p-5 pt-8 overflow-y-auto max-h-[640px] text-left custom-scrollbar relative z-10">
+                            <!-- Status bar info mock -->
+                            <div class="flex justify-between items-center text-[10px] font-mono text-neutral-400 mb-6 px-1">
+                                <span>09:41</span>
+                                <div class="flex items-center gap-1">
+                                    <span>5G</span>
+                                    <div class="w-4 h-2 bg-neutral-400 rounded-sm"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Header: Title + Settings Button -->
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-3xl font-display font-extrabold text-white">Dashboard</h2>
+                                <button class="text-neutral-400 text-lg hover:text-white transition-colors">⚙</button>
+                            </div>
+
+                            <!-- StreakCardView -->
+                            <div class="flex items-center gap-4 p-4 bg-[#1c1c1e] rounded-2xl border border-white/5 shadow-md mb-6">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
+                                    <span class="text-white text-xl font-bold">🔥</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-md font-bold text-white">5 Day Streak</span>
+                                    <span class="text-xs text-neutral-400">You're on fire! Keep it up.</span>
+                                </div>
+                            </div>
+
+                            <!-- StepProgressView -->
+                            <div class="bg-[#1c1c1e] rounded-[2rem] p-5 border border-white/5 mb-6 flex flex-col items-center shadow-md">
+                                <div class="relative w-44 h-44 flex items-center justify-center">
+                                    <!-- Background circle track -->
+                                    <svg class="absolute w-full h-full transform -rotate-95" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="41" fill="none" stroke="#2c2c2e" stroke-width="7" />
+                                        <!-- Progress fill circle (8.450 / 10.000 = 84.5% or dashoffset) -->
+                                        <circle cx="50" cy="50" r="41" fill="none" stroke="url(#stepsGradient)" stroke-width="7" stroke-dasharray="257.6" stroke-dashoffset="39.9" stroke-linecap="round" />
+                                        
+                                        <defs>
+                                            <linearGradient id="stepsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#007aff" />
+                                                <stop offset="100%" stop-color="#af52de" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    
+                                    <!-- Inner content -->
+                                    <div class="flex flex-col items-center justify-center text-center">
+                                        <span class="text-4xl font-display font-extrabold text-white tracking-tight">8.450</span>
+                                        <span class="text-[9px] text-neutral-400 font-bold tracking-wider mt-0.5 uppercase">Steps Today</span>
+                                        <div class="w-12 h-[1px] bg-neutral-800 my-2.5"></div>
+                                        
+                                        <!-- Stars Indicators (TierIndicator) -->
+                                        <div class="flex gap-3 justify-center">
+                                            <!-- Bronze reached -->
+                                            <div class="flex flex-col items-center gap-0.5">
+                                                <span class="text-amber-600 text-xs">★</span>
+                                                <span class="text-[8px] font-extrabold text-amber-600">B</span>
+                                            </div>
+                                            <!-- Silber open -->
+                                            <div class="flex flex-col items-center gap-0.5">
+                                                <span class="text-neutral-500 text-xs">☆</span>
+                                                <span class="text-[8px] font-extrabold text-neutral-500">S</span>
+                                            </div>
+                                            <!-- Gold open -->
+                                            <div class="flex flex-col items-center gap-0.5">
+                                                <span class="text-neutral-500 text-xs">☆</span>
+                                                <span class="text-[8px] font-extrabold text-neutral-500">G</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Three-Tier Status Badges (TierBadge) -->
+                            <div class="flex gap-2 mb-6">
+                                <!-- Bronze: reached -->
+                                <div class="flex-1 flex flex-col items-center py-2.5 bg-amber-600/10 border border-amber-600/20 rounded-xl text-amber-500">
+                                    <span class="text-xs">✓</span>
+                                    <span class="text-[10px] font-bold mt-1">Bronze</span>
+                                    <span class="text-[8px] text-neutral-400 mt-0.5">5.000</span>
+                                </div>
+                                <!-- Silber: open -->
+                                <div class="flex-1 flex flex-col items-center py-2.5 bg-[#2c2c2e] rounded-xl text-neutral-400">
+                                    <span class="text-xs text-neutral-600">○</span>
+                                    <span class="text-[10px] font-bold mt-1">Silber</span>
+                                    <span class="text-[8px] text-neutral-500 mt-0.5">10.000</span>
+                                </div>
+                                <!-- Gold: open -->
+                                <div class="flex-1 flex flex-col items-center py-2.5 bg-[#2c2c2e] rounded-xl text-neutral-400">
+                                    <span class="text-xs text-neutral-600">○</span>
+                                    <span class="text-[10px] font-bold mt-1">Gold</span>
+                                    <span class="text-[8px] text-neutral-500 mt-0.5">15.000</span>
+                                </div>
+                            </div>
+
+                            <!-- Stats & Training Button Grid -->
+                            <div class="grid grid-cols-2 gap-3.5 mb-6">
+                                <!-- Left: Remaining Stat Card (StatCard) -->
+                                <div class="bg-[#1c1c1e] p-4 rounded-2xl border border-white/5 flex flex-col gap-2.5 shadow-md">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-xs text-orange-500 font-bold">🏃</span>
+                                        <span class="text-[9px] text-neutral-400 font-bold uppercase tracking-wider">Fehlt Silber</span>
+                                    </div>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-xl font-bold text-white">1.550</span>
+                                        <span class="text-[9px] text-neutral-400 font-semibold">Schritte</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right: Start Training Button Card -->
+                                <div class="bg-[#34c759] rounded-2xl p-4 flex flex-col items-center justify-center gap-1.5 shadow-md hover:bg-[#32c056] transition-colors cursor-pointer text-white">
+                                    <span class="text-lg">🏃‍♂️</span>
+                                    <span class="text-xs font-bold text-center">Training starten</span>
+                                </div>
+                            </div>
+
+                            <!-- Weekly Success (Wochenerfolg) -->
+                            <div class="bg-[#1c1c1e] rounded-2xl p-4 border border-white/5 mb-6">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm font-bold text-white">Wochenerfolg</span>
+                                    <span class="text-purple-400 text-xs">★</span>
+                                </div>
+                                
+                                <div class="flex gap-2">
+                                    <!-- Bronze Week Badge -->
+                                    <div class="flex-1 flex flex-col items-center py-2 bg-amber-600/15 border border-amber-600/10 rounded-xl">
+                                        <span class="text-[9px] font-bold text-amber-500">Bronze</span>
+                                        <span class="text-xs font-extrabold text-white mt-0.5">7/7</span>
+                                        <span class="text-[8px] text-neutral-400">Tage</span>
+                                    </div>
+                                    <!-- Silber Week Badge -->
+                                    <div class="flex-grow flex flex-col items-center py-2 bg-neutral-600/15 border border-neutral-600/10 rounded-xl">
+                                        <span class="text-[9px] font-bold text-neutral-400">Silber</span>
+                                        <span class="text-xs font-extrabold text-white mt-0.5">3/3</span>
+                                        <span class="text-[8px] text-neutral-400">Tage</span>
+                                    </div>
+                                    <!-- Gold Week Badge -->
+                                    <div class="flex-grow flex flex-col items-center py-2 bg-[#2c2c2e] rounded-xl">
+                                        <span class="text-[9px] font-bold text-neutral-500">Gold</span>
+                                        <span class="text-xs font-extrabold text-neutral-400 mt-0.5">1/2</span>
+                                        <span class="text-[8px] text-neutral-500">Tage</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- History Sektion (WeeklyHistoryChartView) -->
+                            <div class="bg-[#1c1c1e] rounded-2xl p-4 border border-white/5">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-sm font-bold text-white">Historie</span>
+                                    <span class="text-[10px] text-blue-500 font-bold hover:underline cursor-pointer">Alle ansehen</span>
+                                </div>
+                                
+                                <!-- Weekly Chart Mock with Goal Lines -->
+                                <div class="relative h-28 px-1 flex items-end justify-between gap-1.5 pt-2">
+                                    <!-- Goal lines (Bronze, Silber, Gold) -->
+                                    <div class="absolute inset-x-0 bottom-[30px] border-t border-dashed border-amber-600/30 flex justify-end"><span class="text-[7px] text-amber-600/50 -mt-1.5 bg-[#1c1c1e] px-1 font-mono">B</span></div>
+                                    <div class="absolute inset-x-0 bottom-[60px] border-t border-dashed border-neutral-500/30 flex justify-end"><span class="text-[7px] text-neutral-500/50 -mt-1.5 bg-[#1c1c1e] px-1 font-mono">S</span></div>
+                                    <div class="absolute inset-x-0 bottom-[90px] border-t border-dashed border-yellow-500/30 flex justify-end"><span class="text-[7px] text-yellow-500/50 -mt-1.5 bg-[#1c1c1e] px-1 font-mono">G</span></div>
+                                    
+                                    <!-- Bars -->
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#8e8e93] rounded-t-sm" style="height: 66px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">M</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#ffd700] rounded-t-sm shadow-[0_0_8px_rgba(255,215,0,0.15)]" style="height: 92px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">D</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#a05c1c] rounded-t-sm" style="height: 42px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">M</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#8e8e93] rounded-t-sm" style="height: 63px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">D</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-neutral-800 rounded-t-sm" style="height: 24px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">F</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#8e8e93] rounded-t-sm" style="height: 72px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">S</span>
+                                    </div>
+                                    <div class="flex flex-col items-center flex-grow z-10">
+                                        <div class="w-full bg-[#ffd700] rounded-t-sm shadow-[0_0_8px_rgba(255,215,0,0.15)]" style="height: 96px;"></div>
+                                        <span class="text-[8px] text-neutral-500 mt-1">S</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details & Privacy -->
+    <section id="technical" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">Technische Details & Datenschutz</h2>
+                <p class="text-neutral-400 max-w-xl mx-auto">100% lokal. 100% sicher. Konsequent ohne Drittanbieter-Analyse oder Cloud-Zwänge.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">HealthKit Integration</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-4">
+                        Target Walk liest Schrittzahl, aktive Energie und Herzfrequenz live aus Apple HealthKit, um deine Trainings und Tagesfortschritte zu berechnen. 
+                    </p>
+                    <ul class="space-y-2 text-xs text-neutral-500 font-mono">
+                        <li>• iPhone Lesen: Schrittzahl</li>
+                        <li>• iPhone Schreiben: Trainingsdaten</li>
+                        <li>• Watch Lesen: Schritte, Kalorien, Herzfrequenz</li>
+                        <li>• Watch Schreiben: Kalorien, Trainingsdaten</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Datenspeicherung & Offline</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Deine Trainings- und Schrittdaten verbleiben in HealthKit. Die App nutzt <strong>SwiftData</strong> (eine lokale SQLite-Datenbank) ausschließlich zum Speichern deiner individuellen Bronze-, Silber- und Gold-Zielwerte. 
+                        Es gibt <strong>keinen Login</strong>, <strong>keine Server</strong>, und die App sendet keinerlei Daten über das Internet.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Apple Frameworks</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Die App wird exklusiv mit modernsten Apple-Technologien entwickelt. Es kommen keine externen Software Development Kits (SDKs) wie Google Firebase oder Facebook SDK zum Einsatz.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4 text-[10px] text-neutral-400 font-mono">
+                        <span class="px-2 py-1 rounded bg-white/5">SwiftUI</span>
+                        <span class="px-2 py-1 rounded bg-white/5">SwiftData</span>
+                        <span class="px-2 py-1 rounded bg-white/5">HealthKit</span>
+                        <span class="px-2 py-1 rounded bg-white/5">WidgetKit</span>
+                        <span class="px-2 py-1 rounded bg-white/5">WatchConnectivity</span>
+                        <span class="px-2 py-1 rounded bg-white/5">Swift Charts</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Lokal verbunden</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Das Synchronisieren deiner Schritte zwischen Uhr und Telefon läuft im Hintergrund verschlüsselt über <strong>WatchConnectivity</strong> direkt per Bluetooth oder WLAN ab. 
+                        Deine Trainings werden direkt in der systemweiten Apple Fitness-App abgespeichert.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-neutral-500 text-sm">© 2026 DirectValue Digital. Alle Rechte vorbehalten.</p>
+            <div class="flex gap-8 text-sm text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="support.html" class="hover:text-white transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
