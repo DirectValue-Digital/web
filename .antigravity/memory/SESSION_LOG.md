@@ -20,3 +20,4 @@
 
 ## 2026-07-01
 - `2026-07-01 13:13` Neues Projekt 05_Workout_Timer hinzugefügt
+- `2026-07-01 13:18` Mockup in 05_Workout_Timer auf interaktiven Simulator umgestellt

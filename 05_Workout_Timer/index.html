@@ -75,7 +75,7 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 9999px;
         }
     </style>
@@ -169,108 +169,147 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Interactive Mockup Tip Badge -->
+                    <div class="p-4 bg-brand-500/5 rounded-2xl border border-brand-500/10 flex items-center gap-3">
+                        <span class="text-xl">📲</span>
+                        <p class="text-xs text-neutral-400">
+                            <strong>Interaktiver Simulator:</strong> Probiere die App direkt rechts im iPhone-Mockup aus! Klicke auf einen Timer-Modus, um die Workout-Ansicht mit echtem Countdown zu testen.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Right side: iPhone Mockup (CSS SwiftUI replication) -->
+                <!-- Right side: iPhone Mockup (Interactive SwiftUI replication) -->
                 <div class="lg:col-span-5 flex justify-center">
                     <!-- iPhone device wrapper -->
                     <div class="bg-[#050505] rounded-[3.2rem] p-4 max-w-[340px] w-full border-[6px] border-neutral-800 shadow-2xl shadow-neutral-950/80 relative">
                         <!-- iPhone Notch/Island element -->
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-b-2xl border-x border-b border-neutral-900 z-20"></div>
                         
-                        <!-- Scrollable SwiftUI Viewport -->
-                        <div class="bg-[#08080a] rounded-[2.5rem] p-5 pt-8 overflow-y-auto max-h-[620px] text-left custom-scrollbar relative z-10">
+                        <!-- SwiftUI Viewport (Dynamic background controlled by JS) -->
+                        <div id="phone-display" class="bg-gradient-to-br from-[#121214] to-[#08080a] rounded-[2.5rem] p-5 pt-8 overflow-hidden h-[540px] text-left relative z-10 flex flex-col justify-between transition-all duration-500">
                             
-                            <!-- Status bar info mock -->
-                            <div class="flex justify-between items-center text-[10px] font-mono text-neutral-400 mb-6 px-1">
-                                <span>09:41</span>
-                                <div class="flex items-center gap-1">
-                                    <span>5G</span>
-                                    <div class="w-4 h-2 bg-neutral-400 rounded-sm"></div>
+                            <!-- 1. START SCREEN VIEW (StartView.swift replica) -->
+                            <div id="view-start" class="flex flex-col justify-between h-full w-full">
+                                <div>
+                                    <!-- Status bar info mock -->
+                                    <div class="flex justify-between items-center text-[10px] font-mono text-neutral-400 mb-6 px-1">
+                                        <span>09:41</span>
+                                        <div class="flex items-center gap-1">
+                                            <span>5G</span>
+                                            <div class="w-4 h-2 bg-neutral-400 rounded-sm"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- StartView Header -->
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h2 class="text-2xl font-display font-extrabold text-white tracking-wide">Workout Timer</h2>
+                                        <button class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-md hover:bg-white/15 text-white transition active:scale-95">⚙️</button>
+                                    </div>
+
+                                    <!-- Grid Menu (ScrollView replica) -->
+                                    <div class="overflow-y-auto max-h-[380px] pr-1 custom-scrollbar">
+                                        <div class="grid grid-cols-2 gap-3.5 pb-4">
+                                            <!-- HIIT -->
+                                            <button onclick="startTimer('HIIT')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(249,115,22,0.08)] hover:bg-orange-500/10 hover:border-orange-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">⚡</span>
+                                                <span class="text-sm font-bold text-white font-display">HIIT</span>
+                                            </button>
+                                            
+                                            <!-- Tabata -->
+                                            <button onclick="startTimer('Tabata')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(99,102,241,0.08)] hover:bg-indigo-500/10 hover:border-indigo-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">⏱️</span>
+                                                <span class="text-sm font-bold text-white font-display">Tabata</span>
+                                            </button>
+
+                                            <!-- AMRAP -->
+                                            <button onclick="startTimer('AMRAP')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(6,182,212,0.08)] hover:bg-cyan-500/10 hover:border-cyan-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🔄</span>
+                                                <span class="text-sm font-bold text-white font-display">AMRAP</span>
+                                            </button>
+
+                                            <!-- For Time -->
+                                            <button onclick="startTimer('ForTime')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(168,85,247,0.08)] hover:bg-purple-500/10 hover:border-purple-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏁</span>
+                                                <span class="text-xs font-bold text-white text-center leading-tight font-display">Rounds<br>For Time</span>
+                                            </button>
+
+                                            <!-- EMOM -->
+                                            <button onclick="startTimer('EMOM')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(20,184,166,0.08)] hover:bg-teal-500/10 hover:border-teal-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🔔</span>
+                                                <span class="text-sm font-bold text-white font-display">EMOM</span>
+                                            </button>
+
+                                            <!-- FGB -->
+                                            <button onclick="startTimer('FGB')" class="flex flex-col items-center justify-center h-24 rounded-2xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(239,68,68,0.08)] hover:bg-red-500/10 hover:border-red-500/30 transition duration-300 group active:scale-95">
+                                                <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💥</span>
+                                                <span class="text-sm font-bold text-white font-display">FGB</span>
+                                            </button>
+
+                                            <!-- Rest Timer (Double span) -->
+                                            <button onclick="startTimer('Rest')" class="col-span-2 flex flex-col items-center justify-center h-20 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300 group active:scale-95">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl group-hover:scale-110 transition-transform">☕</span>
+                                                    <span class="text-md font-bold text-white font-display">Rest Timer</span>
+                                                </div>
+                                            </button>
+
+                                            <!-- DIY Interval (Double span) -->
+                                            <button onclick="startTimer('DIY')" class="col-span-2 flex flex-col items-center justify-center h-20 rounded-2xl bg-white/5 border border-white/10 hover:bg-blue-500/10 hover:border-blue-500/30 transition duration-300 group active:scale-95">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-2xl group-hover:scale-110 transition-transform">🛠️</span>
+                                                    <span class="text-sm font-bold text-white text-center leading-tight font-display">Do It Yourself Interval</span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <!-- Header: Title + Theme Button -->
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="text-xs font-bold text-brand-400 tracking-widest uppercase">Tabata-Klassiker</span>
-                                <button class="w-8 h-8 rounded-full bg-[#1c1c1e] flex items-center justify-center text-xs hover:bg-[#2c2c2e] text-white">🎨</button>
-                            </div>
 
-                            <!-- Celebration/Status Ring Card -->
-                            <div class="bg-[#121215] rounded-[2rem] p-6 border border-white/5 mb-6 flex flex-col items-center shadow-lg relative overflow-hidden">
-                                <!-- Subtle grid glow background -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-500/5 to-transparent pointer-events-none"></div>
+                            <!-- 2. TIMER SESSION VIEW (TabataSessionView / TimerSessionView replica) -->
+                            <div id="view-session" class="hidden flex-col justify-between h-full w-full">
+                                <div class="flex flex-col h-full justify-between">
+                                    <!-- Status bar info mock -->
+                                    <div class="flex justify-between items-center text-[10px] font-mono text-neutral-400 mb-6 px-1">
+                                        <span>09:41</span>
+                                        <div class="flex items-center gap-1">
+                                            <span>5G</span>
+                                            <div class="w-4 h-2 bg-neutral-400 rounded-sm"></div>
+                                        </div>
+                                    </div>
 
-                                <!-- Timer Title -->
-                                <h3 class="text-sm font-semibold text-neutral-400 mb-6 tracking-wide uppercase">Runde 3 von 8</h3>
+                                    <!-- Session Header -->
+                                    <div class="flex justify-between items-end">
+                                        <div class="flex flex-col">
+                                            <span class="text-[9px] font-bold text-neutral-400 tracking-widest uppercase">ROUND</span>
+                                            <div class="flex items-baseline gap-1 mt-0.5">
+                                                <span id="session-round-current" class="text-2xl font-bold text-white font-display">1</span>
+                                                <span id="session-round-total" class="text-sm text-neutral-400">/ 8</span>
+                                            </div>
+                                        </div>
 
-                                <!-- Circular Timer Ring -->
-                                <div class="relative w-48 h-48 flex items-center justify-center mb-6">
-                                    <!-- Background circle track -->
-                                    <svg class="absolute w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="42" fill="none" stroke="#222" stroke-width="5" />
-                                        <!-- Progress ring (70% done for WORK - 14s of 20s remaining) -->
-                                        <circle cx="50" cy="50" r="42" fill="none" stroke="url(#timerGradient)" stroke-width="5" stroke-dasharray="263.89" stroke-dashoffset="79.16" stroke-linecap="round" />
-                                        
-                                        <defs>
-                                            <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                <stop offset="0%" stop-color="#ff4757" />
-                                                <stop offset="100%" stop-color="#ff7f50" />
-                                            </linearGradient>
-                                        </defs>
-                                    </svg>
-                                    
-                                    <!-- Inner Timer Numbers & Status -->
-                                    <div class="flex flex-col items-center justify-center text-center">
-                                        <!-- Status Indicator badge -->
-                                        <span class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-[10px] font-extrabold uppercase tracking-wider mb-2 shadow-sm border border-brand-500/20">
+                                        <span id="session-status-badge" class="px-4 py-1.5 rounded-full bg-indigo-500/20 text-white border border-white/10 text-xs font-black uppercase tracking-wider shadow-sm">
                                             WORK
                                         </span>
-                                        <span class="text-5xl font-display font-extrabold text-white tracking-tight">00:14</span>
-                                        <span class="text-[9px] text-neutral-500 font-bold uppercase tracking-widest mt-1">Sekunden</span>
                                     </div>
-                                </div>
 
-                                <!-- Next phase snippet -->
-                                <div class="text-center">
-                                    <span class="text-xs text-neutral-500">Nächste Phase: </span>
-                                    <span class="text-xs text-brand-400 font-semibold">PAUSE (00:10)</span>
-                                </div>
-                            </div>
-
-                            <!-- Live Control panel -->
-                            <div class="bg-[#121215] rounded-2xl p-4 border border-white/5 mb-6 flex justify-around items-center">
-                                <button class="w-10 h-10 rounded-full bg-[#1c1c1e] text-white flex items-center justify-center text-sm font-semibold hover:bg-neutral-800 transition">
-                                    ⏹
-                                </button>
-                                <button class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-orangeAccent-500 text-white flex items-center justify-center text-xl font-bold shadow-lg shadow-brand-500/20 hover:scale-105 transition-transform">
-                                    ⏸
-                                </button>
-                                <button class="w-10 h-10 rounded-full bg-[#1c1c1e] text-white flex items-center justify-center text-sm font-semibold hover:bg-neutral-800 transition">
-                                    🔊
-                                </button>
-                            </div>
-
-                            <!-- DIY Block list replica -->
-                            <div class="bg-[#121215] rounded-2xl p-4 border border-white/5">
-                                <div class="flex justify-between items-center mb-3">
-                                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-wide">Preset-Favoriten</span>
-                                    <span class="text-brand-400 text-xs font-bold">Laden</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="flex justify-between items-center bg-[#1c1c1e] p-2.5 rounded-xl border border-white/5">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-xs">❤️</span>
-                                            <span class="text-xs font-semibold text-white">Tabata Cardio 8x</span>
-                                        </div>
-                                        <span class="text-[10px] text-neutral-500 font-mono">04:00</span>
+                                    <!-- Timer Display Card (GlassCard replica) -->
+                                    <div class="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-lg text-center my-6 flex flex-col justify-center items-center">
+                                        <span id="session-timer-text" class="font-mono text-6xl font-extralight text-white tracking-normal select-none">00:20</span>
+                                        <span id="session-timer-subtext" class="text-[9px] text-neutral-400 font-bold uppercase tracking-widest mt-3">VERBLEIBEND</span>
                                     </div>
-                                    <div class="flex justify-between items-center bg-[#1c1c1e] p-2.5 rounded-xl border border-white/5 opacity-60">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-xs">❤️</span>
-                                            <span class="text-xs font-semibold text-white">HIIT Pyramide</span>
-                                        </div>
-                                        <span class="text-[10px] text-neutral-500 font-mono">20:00</span>
+
+                                    <!-- Control Buttons panel -->
+                                    <div class="flex items-center justify-center gap-10 pb-6">
+                                        <!-- Play / Pause (80x80) -->
+                                        <button onclick="togglePlayPause()" class="w-20 h-20 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center text-2xl hover:bg-white/15 transition duration-300 active:scale-95 shadow-md">
+                                            <span id="control-play-icon">⏸</span>
+                                        </button>
+                                        
+                                        <!-- Cancel / Stop (60x60) -->
+                                        <button onclick="stopSession()" class="w-14 h-14 rounded-full bg-red-500/20 border border-red-500/30 text-white flex items-center justify-center text-lg hover:bg-red-500/30 transition duration-300 active:scale-95 shadow-md">
+                                            ✕
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +333,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- HIIT -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6 font-bold">
                         ⚡
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">HIIT (High Intensity)</h3>
@@ -305,7 +344,7 @@
 
                 <!-- Tabata -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-6 font-bold">
                         ⏱
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Tabata-Klassiker</h3>
@@ -316,7 +355,7 @@
 
                 <!-- AMRAP -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 font-bold">
                         🔄
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">AMRAP (As Many Rounds)</h3>
@@ -327,7 +366,7 @@
 
                 <!-- For Time -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6 font-bold">
                         🏁
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">For Time (Stoppuhr)</h3>
@@ -338,7 +377,7 @@
 
                 <!-- EMOM -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 font-bold">
                         🔔
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">EMOM (Every Minute)</h3>
@@ -349,7 +388,7 @@
 
                 <!-- FGB -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6 font-bold">
                         💥
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">FGB (Fight Gone Bad)</h3>
@@ -360,7 +399,7 @@
 
                 <!-- Rest Timer -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-neutral-500/10 rounded-2xl flex items-center justify-center text-neutral-400 mb-6 font-bold">
                         ☕
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Rest Timer (Krafttraining)</h3>
@@ -371,7 +410,7 @@
 
                 <!-- DIY Interval -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6 font-bold">
                         🛠
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">DIY Interval (Freier Bau)</h3>
@@ -440,6 +479,160 @@
         </div>
     </footer>
 
+    <!-- INTERACTIVE APP SIMULATOR CONTROLLER -->
+    <script>
+        // High fidelity configurations taken from the SwiftUI project code.
+        const timerConfigs = {
+            HIIT: { name: 'HIIT', work: 40, rest: 20, total: 5, color: '#f97316', bgGrad: 'from-[#1c0e06] to-[#431407]' },
+            Tabata: { name: 'Tabata', work: 20, rest: 10, total: 8, color: '#6366f1', bgGrad: 'from-[#0b0c10] to-[#1e1b4b]' },
+            AMRAP: { name: 'AMRAP', work: 60, rest: 0, total: 1, color: '#06b6d4', bgGrad: 'from-[#031517] to-[#083344]' },
+            ForTime: { name: 'For Time', work: 90, rest: 0, total: 1, color: '#a855f7', bgGrad: 'from-[#12071d] to-[#3b0764]' },
+            EMOM: { name: 'EMOM', work: 60, rest: 0, total: 3, color: '#14b8a6', bgGrad: 'from-[#041915] to-[#042f2e]' },
+            FGB: { name: 'FGB', work: 60, rest: 60, total: 3, color: '#ef4444', bgGrad: 'from-[#1c0808] to-[#450a0a]' },
+            Rest: { name: 'Rest Timer', work: 90, rest: 0, total: 1, color: '#48484a', bgGrad: 'from-[#0a0a0a] to-[#242426]' },
+            DIY: { name: 'DIY Interval', work: 30, rest: 15, total: 4, color: '#3b82f6', bgGrad: 'from-[#030e20] to-[#172554]' }
+        };
+
+        let selectedTimer = null;
+        let timerState = 'work'; // 'work', 'rest', 'paused'
+        let timeLeft = 0;
+        let currentRound = 1;
+        let timerInterval = null;
+
+        const displayEl = document.getElementById('phone-display');
+        const viewStartEl = document.getElementById('view-start');
+        const viewSessionEl = document.getElementById('view-session');
+        const timerTextEl = document.getElementById('session-timer-text');
+        const timerSubtextEl = document.getElementById('session-timer-subtext');
+        const badgeEl = document.getElementById('session-status-badge');
+        const roundCurrentEl = document.getElementById('session-round-current');
+        const roundTotalEl = document.getElementById('session-round-total');
+        const playIconEl = document.getElementById('control-play-icon');
+
+        // Helper: format seconds to MM:SS
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60).toString().padStart(2, '0');
+            const s = (sec % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+        }
+
+        // Triggered when user clicks a grid button
+        function startTimer(type) {
+            selectedTimer = timerConfigs[type];
+            if (!selectedTimer) return;
+
+            // Stop any existing intervals
+            clearInterval(timerInterval);
+
+            // Configure state
+            timerState = 'work';
+            timeLeft = selectedTimer.work;
+            currentRound = 1;
+
+            // Apply Dynamic Gradient to display, mirroring the .themeBackground() override Color in SwiftUI
+            displayEl.className = `bg-gradient-to-br ${selectedTimer.bgGrad} rounded-[2.5rem] p-5 pt-8 overflow-hidden h-[540px] text-left relative z-10 flex flex-col justify-between transition-all duration-500`;
+
+            // Switch layout views
+            viewStartEl.classList.add('hidden');
+            viewSessionEl.classList.remove('hidden');
+
+            // Set UI texts
+            roundCurrentEl.textContent = currentRound;
+            roundTotalEl.textContent = `/ ${selectedTimer.total}`;
+            playIconEl.textContent = '⏸';
+
+            updateDisplay();
+
+            // Run interval loop
+            timerInterval = setInterval(tick, 1000);
+        }
+
+        // Clock pulse update
+        function updateDisplay() {
+            timerTextEl.textContent = formatTime(timeLeft);
+
+            if (timerState === 'work') {
+                badgeEl.textContent = 'WORK';
+                badgeEl.style.backgroundColor = `${selectedTimer.color}33`; // Alpha opacity 20%
+                badgeEl.style.borderColor = `${selectedTimer.color}55`;
+                timerSubtextEl.textContent = 'INTERVALL AKTIV';
+            } else if (timerState === 'rest') {
+                badgeEl.textContent = 'REST';
+                badgeEl.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'; // Semi-translucent blue
+                badgeEl.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+                timerSubtextEl.textContent = 'ERHOLUNGSPHASE';
+            }
+        }
+
+        // Iterative timer countdown logic
+        function tick() {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateDisplay();
+            } else {
+                // Phase end
+                if (timerState === 'work' && selectedTimer.rest > 0) {
+                    // Transition to REST
+                    timerState = 'rest';
+                    timeLeft = selectedTimer.rest;
+                } else {
+                    // Round finished, transition to next WORK round
+                    if (currentRound < selectedTimer.total) {
+                        currentRound++;
+                        roundCurrentEl.textContent = currentRound;
+                        timerState = 'work';
+                        timeLeft = selectedTimer.work;
+                    } else {
+                        // All rounds completed!
+                        clearInterval(timerInterval);
+                        timerTextEl.textContent = 'DONE';
+                        timerSubtextEl.textContent = 'WORKOUT BEENDET';
+                        badgeEl.textContent = 'FINISH';
+                        badgeEl.style.backgroundColor = 'rgba(16, 185, 129, 0.3)'; // Green
+                        badgeEl.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                        playIconEl.textContent = '🔄';
+                        timerState = 'finished';
+                        return;
+                    }
+                }
+                updateDisplay();
+            }
+        }
+
+        // Action: Play / Pause toggle
+        function togglePlayPause() {
+            if (timerState === 'finished') {
+                // Restart simulation
+                startTimer(Object.keys(timerConfigs).find(key => timerConfigs[key].name === selectedTimer.name));
+                return;
+            }
+
+            if (timerInterval) {
+                // Pause it
+                clearInterval(timerInterval);
+                timerInterval = null;
+                playIconEl.textContent = '▶️';
+            } else {
+                // Resume it
+                playIconEl.textContent = '⏸';
+                timerInterval = setInterval(tick, 1000);
+            }
+        }
+
+        // Action: Stop session & go back to dashboard
+        function stopSession() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            selectedTimer = null;
+
+            // Reset display gradient to standard grey
+            displayEl.className = 'bg-gradient-to-br from-[#121214] to-[#08080a] rounded-[2.5rem] p-5 pt-8 overflow-hidden h-[540px] text-left relative z-10 flex flex-col justify-between transition-all duration-500';
+
+            // Show start screen view
+            viewSessionEl.classList.add('hidden');
+            viewStartEl.classList.remove('hidden');
+        }
+    </script>
 </body>
 
 </html>
