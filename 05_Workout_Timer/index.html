@@ -1,57 +1,445 @@
 <!DOCTYPE html>
 <html lang="de" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Timer - DirectValue Digital</title>
+    <title>Intervally — Premium Workout Timer für iPhone & Apple Watch</title>
     <link rel="icon" href="../assets/logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], },
-                    colors: { brand: { 500: '#3b82f6', 600: '#2563eb' } }
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            500: '#ff4757', /* Vibrant Coral/Red */
+                            600: '#e03d4b',
+                            400: '#ff6b81'
+                        },
+                        orangeAccent: {
+                            500: '#ff7f50',
+                            400: '#ffa502'
+                        }
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #e5e5e5; }
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top center, rgba(255, 71, 87, 0.09) 0%, rgba(255, 127, 80, 0.03) 40%, transparent 80%);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+
+<body class="antialiased font-sans">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-4 group p-2">
-                <img src="../assets/logo.jpg" alt="Logo" class="w-14 h-14 rounded-lg shadow-lg shadow-blue-500/10 group-hover:scale-105 transition-transform">
-                <span class="font-bold text-xl tracking-tight text-white">DirectValue Digital</span>
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white hidden sm:block">DirectValue Digital</span>
             </a>
-            
-            <a href="../index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-                ← Zurück
-            </a>
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="#features" class="text-neutral-400 hover:text-white transition-colors">Features</a>
+                <a href="#technical" class="text-neutral-400 hover:text-white transition-colors">Technik & Privacy</a>
+                <a href="support.html" class="text-neutral-400 hover:text-white transition-colors">Support</a>
+                <a href="privacy.html" class="text-neutral-400 hover:text-white transition-colors">Privacy</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content (Centered) -->
-    <main class="flex-grow flex flex-col justify-center items-center text-center p-6 pt-32">
-        <div class="space-y-6">
-            <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-neutral-500 bg-clip-text text-transparent">
-                Workout Timer
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-28 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold border border-brand-500/20 mb-8">
+                <span>🔥 €1,99 Einmalkauf — Keine Abos, keine Werbung</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-display font-extrabold tracking-tight mb-8 leading-tight text-white">
+                Intervally.<br>Acht Timer. <span class="bg-gradient-to-r from-brand-500 via-brand-400 to-orangeAccent-500 bg-clip-text text-transparent">Ein Preis.</span>
             </h1>
-            <p class="text-xl text-neutral-500">Coming Soon</p>
+            
+            <p class="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-12">
+                Der ultimative Workout-Timer für dein Training. HIIT, Tabata, AMRAP, EMOM und vieles mehr in einer atemberaubend schönen App.
+            </p>
+
+            <div class="flex flex-col items-center justify-center gap-8 mb-8">
+                <!-- Icon with glowing shadow -->
+                <img src="../assets/icon_timer.png" alt="Intervally App Icon" class="w-32 h-32 md:w-44 md:h-44 rounded-[2.2rem] shadow-[0_0_50px_rgba(255,71,87,0.2)] border-4 border-white/10 hover:scale-105 transition-transform duration-300">
+                
+                <div class="text-sm font-semibold tracking-wider text-neutral-500 uppercase">
+                    Verfügbar für iPhone & Apple Watch
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <!-- App Overview Grid & iPhone Mockup -->
+    <section class="py-24 glass border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left side: Description & App Info -->
+                <div class="lg:col-span-7 space-y-8">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold text-white leading-tight">
+                        Dein persönlicher Trainings-Timer für jedes Workout.
+                    </h2>
+                    <p class="text-neutral-400 leading-relaxed text-lg font-light">
+                        Acht leistungsstarke Timer-Modi vereint in einer eleganten Benutzeroberfläche. Entwickelt mit SwiftUI für maximale Performance und nahtlose Apple Watch Integration. Einmal kaufen, für immer nutzen — ohne Abo-Zwänge, Werbung oder In-App-Käufe.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0 font-bold">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Volle Flexibilität</h4>
+                                <p class="text-neutral-400 text-sm">Passe Intervalle, Zyklen, Pausenzeiten und Runden exakt an deine Bedürfnisse an.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0 font-bold">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Synthetisiertes Audio</h4>
+                                <p class="text-neutral-400 text-sm">Präzise 3-2-1 Countdowns, Signal-Fanfaren und Abschluss-Applaus direkt vom System erzeugt.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0 font-bold">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Individuelle Themes</h4>
+                                <p class="text-neutral-400 text-sm">Wähle deine Lieblingsfarbe über den Hue-Slider oder trainiere im schlichten Monochrom-Modus.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0 font-bold">✓</div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Apple Watch Sync</h4>
+                                <p class="text-neutral-400 text-sm">Timer-Status und Steuerung werden in Echtzeit zwischen Watch und iPhone übertragen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side: iPhone Mockup (CSS SwiftUI replication) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <!-- iPhone device wrapper -->
+                    <div class="bg-[#050505] rounded-[3.2rem] p-4 max-w-[340px] w-full border-[6px] border-neutral-800 shadow-2xl shadow-neutral-950/80 relative">
+                        <!-- iPhone Notch/Island element -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-b-2xl border-x border-b border-neutral-900 z-20"></div>
+                        
+                        <!-- Scrollable SwiftUI Viewport -->
+                        <div class="bg-[#08080a] rounded-[2.5rem] p-5 pt-8 overflow-y-auto max-h-[620px] text-left custom-scrollbar relative z-10">
+                            
+                            <!-- Status bar info mock -->
+                            <div class="flex justify-between items-center text-[10px] font-mono text-neutral-400 mb-6 px-1">
+                                <span>09:41</span>
+                                <div class="flex items-center gap-1">
+                                    <span>5G</span>
+                                    <div class="w-4 h-2 bg-neutral-400 rounded-sm"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Header: Title + Theme Button -->
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-bold text-brand-400 tracking-widest uppercase">Tabata-Klassiker</span>
+                                <button class="w-8 h-8 rounded-full bg-[#1c1c1e] flex items-center justify-center text-xs hover:bg-[#2c2c2e] text-white">🎨</button>
+                            </div>
+
+                            <!-- Celebration/Status Ring Card -->
+                            <div class="bg-[#121215] rounded-[2rem] p-6 border border-white/5 mb-6 flex flex-col items-center shadow-lg relative overflow-hidden">
+                                <!-- Subtle grid glow background -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-500/5 to-transparent pointer-events-none"></div>
+
+                                <!-- Timer Title -->
+                                <h3 class="text-sm font-semibold text-neutral-400 mb-6 tracking-wide uppercase">Runde 3 von 8</h3>
+
+                                <!-- Circular Timer Ring -->
+                                <div class="relative w-48 h-48 flex items-center justify-center mb-6">
+                                    <!-- Background circle track -->
+                                    <svg class="absolute w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="42" fill="none" stroke="#222" stroke-width="5" />
+                                        <!-- Progress ring (70% done for WORK - 14s of 20s remaining) -->
+                                        <circle cx="50" cy="50" r="42" fill="none" stroke="url(#timerGradient)" stroke-width="5" stroke-dasharray="263.89" stroke-dashoffset="79.16" stroke-linecap="round" />
+                                        
+                                        <defs>
+                                            <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#ff4757" />
+                                                <stop offset="100%" stop-color="#ff7f50" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                    
+                                    <!-- Inner Timer Numbers & Status -->
+                                    <div class="flex flex-col items-center justify-center text-center">
+                                        <!-- Status Indicator badge -->
+                                        <span class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-[10px] font-extrabold uppercase tracking-wider mb-2 shadow-sm border border-brand-500/20">
+                                            WORK
+                                        </span>
+                                        <span class="text-5xl font-display font-extrabold text-white tracking-tight">00:14</span>
+                                        <span class="text-[9px] text-neutral-500 font-bold uppercase tracking-widest mt-1">Sekunden</span>
+                                    </div>
+                                </div>
+
+                                <!-- Next phase snippet -->
+                                <div class="text-center">
+                                    <span class="text-xs text-neutral-500">Nächste Phase: </span>
+                                    <span class="text-xs text-brand-400 font-semibold">PAUSE (00:10)</span>
+                                </div>
+                            </div>
+
+                            <!-- Live Control panel -->
+                            <div class="bg-[#121215] rounded-2xl p-4 border border-white/5 mb-6 flex justify-around items-center">
+                                <button class="w-10 h-10 rounded-full bg-[#1c1c1e] text-white flex items-center justify-center text-sm font-semibold hover:bg-neutral-800 transition">
+                                    ⏹
+                                </button>
+                                <button class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-orangeAccent-500 text-white flex items-center justify-center text-xl font-bold shadow-lg shadow-brand-500/20 hover:scale-105 transition-transform">
+                                    ⏸
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-[#1c1c1e] text-white flex items-center justify-center text-sm font-semibold hover:bg-neutral-800 transition">
+                                    🔊
+                                </button>
+                            </div>
+
+                            <!-- DIY Block list replica -->
+                            <div class="bg-[#121215] rounded-2xl p-4 border border-white/5">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-wide">Preset-Favoriten</span>
+                                    <span class="text-brand-400 text-xs font-bold">Laden</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center bg-[#1c1c1e] p-2.5 rounded-xl border border-white/5">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs">❤️</span>
+                                            <span class="text-xs font-semibold text-white">Tabata Cardio 8x</span>
+                                        </div>
+                                        <span class="text-[10px] text-neutral-500 font-mono">04:00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center bg-[#1c1c1e] p-2.5 rounded-xl border border-white/5 opacity-60">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs">❤️</span>
+                                            <span class="text-xs font-semibold text-white">HIIT Pyramide</span>
+                                        </div>
+                                        <span class="text-[10px] text-neutral-500 font-mono">20:00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Sektion -->
+    <section id="features" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">Acht Timer-Modi im Detail</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-orangeAccent-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- HIIT -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">HIIT (High Intensity)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Wechsle kontrolliert zwischen hochintensiven Arbeitsphasen und kurzen Erholungsphasen. Arbeitszeit, Pausenzeit und die Zyklenanzahl sind stufenlos konfigurierbar. Visuelle Statusanzeige mit WORK, REST und BREATHE Phasen.
+                    </p>
+                </div>
+
+                <!-- Tabata -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                        ⏱
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tabata-Klassiker</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Der Klassiker für maximale Ausdauer: 20 Sekunden harte Arbeit gefolgt von 10 Sekunden Pause über 8 Runden hinweg. Voll konfigurierbar mit farblich klar unterschiedener Work/Rest-Anzeige.
+                    </p>
+                </div>
+
+                <!-- AMRAP -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                        🔄
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">AMRAP (As Many Rounds)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Absolviere so viele Runden wie möglich innerhalb des Zeitlimits. Beinhaltet einen integrierten Runden-Zähler (Plus-Button), automatischen Countdown und einen abschließenden Celebration-Screen.
+                    </p>
+                </div>
+
+                <!-- For Time -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                        🏁
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">For Time (Stoppuhr)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Arbeite gegen die Uhr, um eine vorgegebene Anzahl Runden so schnell wie möglich zu beenden. Nutze den manuellen Runden-Plus-Button. Mit optionalem Time Cap (Zeitlimit), der das Training automatisch stoppt.
+                    </p>
+                </div>
+
+                <!-- EMOM -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                        🔔
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">EMOM (Every Minute)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Starte jede Runde präzise zu Beginn einer neuen Minute. Die verbleibende Zeit der Minute dient dir als wertvolle Erholung vor dem automatischen Start der nächsten Runde. Runden und Intervalldauer frei einstellbar.
+                    </p>
+                </div>
+
+                <!-- FGB -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                        💥
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">FGB (Fight Gone Bad)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Der CrossFit-Klassiker: 5 Stationen à 1 Minute am Limit, gefolgt von exakt 1 Minute wohlverdienter Pause. Wähle zwischen 3 oder 5 Runden. Station-für-Station-Durchlauf mit automatischer Ansage.
+                    </p>
+                </div>
+
+                <!-- Rest Timer -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                        ☕
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Rest Timer (Krafttraining)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Dein Begleiter für das klassische Krafttraining: Ein wiederholter Pausentimer, der nach Ablauf automatisch zurücksetzt. Zählt deine absolvierten Sätze (Sets Completed) zuverlässig mit.
+                    </p>
+                </div>
+
+                <!-- DIY Interval -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-orangeAccent-500/10 rounded-2xl flex items-center justify-center text-orangeAccent-500 mb-6 font-bold">
+                        🛠
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">DIY Interval (Freier Bau)</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Entwirf dein ganz eigenes Workout aus beliebig vielen Trainingsblöcken. Du kannst Blöcke hinzufügen, benennen, Runden und Zeiten festlegen und Blöcke per Drag-and-Drop neu anordnen.
+                    </p>
+                </div>
+
+                <!-- Zusätzliche Features -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-400 mb-6 font-bold">
+                        💎
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Premium-Erweiterungen</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        <strong>Presets:</strong> Workouts als Favoriten speichern. 
+                        <strong>Theme-Picker:</strong> Dynamische Farb-Gradients per Regenbogen-Slider. 
+                        <strong>PCM-Audio:</strong> Akustisches Feedback und Countdowns ohne Dateilast.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details & Privacy -->
+    <section id="technical" class="py-24 bg-neutral-900/20 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">Technische Details &amp; Privatsphäre</h2>
+                <p class="text-neutral-400 max-w-xl mx-auto">100% lokal auf deinem Gerät. Absolut privat. Keine Datensammlung.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">SwiftUI &amp; Apple Standards</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed mb-4">
+                        Intervally wird exklusiv mit modernsten Apple-Frameworks entwickelt. Es kommen keine schweren Drittanbieter-Bibliotheken oder Tracker-Frameworks (z. B. Google Firebase) zum Einsatz.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-[10px] text-neutral-400 font-mono">
+                        <span class="px-2 py-1 rounded bg-white/5">SwiftUI (iOS 18+)</span>
+                        <span class="px-2 py-1 rounded bg-white/5">UserDefaults</span>
+                        <span class="px-2 py-1 rounded bg-white/5">WatchConnectivity</span>
+                        <span class="px-2 py-1 rounded bg-white/5">AVFAudio (PCM-Synthese)</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Privacy by Design</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Deine Workout-Presets und Einstellungen verbleiben ausschließlich lokal verschlüsselt auf deinem iPhone. Die App läuft <strong>vollständig offline</strong> und erfasst keinerlei Benutzerdaten. Keine Werbung, keine Abos, keine Kontenregistrierung nötig.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-neutral-500 text-sm">© 2026 DirectValue Digital. Alle Rechte vorbehalten.</p>
+            <div class="flex gap-8 text-sm text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutzerklärung</a>
+                <a href="support.html" class="hover:text-white transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
+
 </html>

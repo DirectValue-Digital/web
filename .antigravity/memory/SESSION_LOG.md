@@ -16,3 +16,7 @@
 
 ## 2026-06-24
 - `2026-06-24 15:25` Neues Projekt 12_Target_Walk hinzugefügt
+- `2026-06-24 15:45` Bereinigung des Portfolios: 7 Apps entfernt und alle Badges gelöscht
+
+## 2026-07-01
+- `2026-07-01 13:13` Neues Projekt 05_Workout_Timer hinzugefügt

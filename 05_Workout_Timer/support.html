@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Intervally</title>
+    <link class="icon" href="../assets/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 500: '#ff4757', 600: '#ff6b81' } /* Coral/Red/Orange Accents */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ff4757 0%, #ff7f50 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5 top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital" class="w-10 h-10 rounded-lg group-hover:scale-105 transition-transform">
+                <span class="font-bold text-lg tracking-tight text-white">Intervally</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+                ← Back to App / Zurück zur App
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-40 pb-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+
+            <!-- ENGLISH SECTION -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Intervally Support – <span class="text-gradient">We are here for you!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Welcome to the Intervally support area. Do you have questions about adjusting timers, customization, or offline usage? Here you'll find answers to common questions.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. The app shows an empty screen. What should I do?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Make sure you have installed the latest version from the App Store. In case of issues, please close the app completely (via the App Switcher) and restart it.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Can I adjust the colors of the app?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Yes. Tap the palette icon in the upper right corner of the home screen. There you can choose between color and monochrome mode and adjust the brightness using the rainbow slider.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. How do I save a workout as a preset?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            After making your desired timer configurations, tap the heart icon at the bottom of the configuration screen. Enter a name and save it.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Does the app work without an internet connection?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Yes. The app does not require any internet connection for its core functions.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">5. Are there any in-app purchases or subscriptions?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            No. The app has a one-off purchase price of €1.99 in the App Store — there are no ads, no subscriptions, and no hidden costs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEPARATOR -->
+            <div class="my-16 border-t border-white/5"></div>
+
+            <!-- GERMAN SECTION -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                        Intervally Support – <span class="text-gradient">Wir sind für Sie da!</span>
+                    </h1>
+                    <p class="text-lg text-neutral-400 leading-relaxed font-light">
+                        Willkommen im Support-Bereich von Intervally. Haben Sie Fragen zum Konfigurieren der Timer, zu den Voreinstellungen oder zur Offline-Nutzung? Hier finden Sie die Antworten auf die häufigsten Fragen.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">1. Die App zeigt einen leeren Bildschirm. Was kann ich tun?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Stelle sicher, dass du die aktuelle Version aus dem App Store installiert hast. Bei Problemen schließe die App bitte vollständig (über den App Switcher) und starte sie neu.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">2. Kann ich die Farben anpassen?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Ja. Tippe auf das Palette-Symbol oben rechts im Startbildschirm. Dort kannst du zwischen Farb- und Monochrom-Modus wählen und die Helligkeit über einen Regenbogen-Slider anpassen.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">3. Wie speichere ich ein Workout als Preset?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Nachdem du deine gewünschten Einstellungen vorgenommen hast, tippe auf das Herz-Symbol unten im Konfigurationsbildschirm. Vergib einen Namen und speichere das Workout.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">4. Funktioniert die App ohne Internet?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Ja. Die App benötigt keinerlei Internetverbindung für ihre Kernfunktionen.
+                        </p>
+                    </div>
+                    <div class="glass rounded-2xl p-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">5. Gibt es In-App-Käufe oder Abonnements?</h3>
+                        <p class="text-neutral-400 leading-relaxed text-sm">
+                            Nein. Die App kostet einmalig €1,99 im App Store — keine Werbung, keine Abos und keine versteckten Kosten.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <section class="glass rounded-[2.5rem] p-10 md:p-12 relative overflow-hidden">
+                <h2 class="text-3xl font-bold text-white mb-8">Need more help? / Brauchen Sie Hilfe?</h2>
+                <p class="text-neutral-400 mb-10 leading-relaxed">
+                    If you haven't found the answer you're looking for, please contact our support team. / Falls Sie keine Antwort auf Ihre Frage gefunden haben, kontaktieren Sie uns gerne direkt per E-Mail.
+                </p>
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-medium text-white">Email Support</p>
+                        <p class="text-sm text-neutral-400">
+                            <a href="mailto:contact@directvalue-digital.de" class="text-brand-500 hover:underline">contact@directvalue-digital.de</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/50">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-neutral-500 text-sm">© 2026 DirectValue Digital. All rights reserved.</p>
+            <div class="flex gap-8 text-sm text-neutral-400">
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
