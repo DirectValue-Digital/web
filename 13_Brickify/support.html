@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Hilfebereich – Brickify</title>
+    <link rel="icon" href="../assets/icon_brickify.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #94a3b8;
+        }
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="../assets/icon_brickify.png" alt="Brickify App Icon" class="w-10 h-10 rounded-xl group-hover:scale-105 transition-transform border border-white/10">
+                <span class="font-bold text-lg tracking-tight text-white font-display">Brickify Support</span>
+            </a>
+            <a href="index.html" class="text-sm text-slate-400 hover:text-white transition-colors">
+                ← Zurück zur App-Seite
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-36 pb-20 flex-grow">
+        
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
+                💬 Kundenservice & Hilfe
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-display font-extrabold text-white mb-4">
+                Wie können wir dir helfen?
+            </h1>
+            <p class="text-slate-400 max-w-xl mx-auto">
+                Hier findest du Antworten auf häufig gestellte Fragen (FAQ) sowie direkte Kontaktmöglichkeiten zu unserem Support-Team.
+            </p>
+        </div>
+
+        <!-- FAQ Accordion/Cards -->
+        <div class="space-y-6 mb-16">
+            
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                    <span class="text-indigo-400">❓</span> Ist Brickify wirklich 100 % werbefrei?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Ja, absolut! Brickify enthält weder Werbebanner noch Unterbrechungs-Videos oder versteckte Tracker. Nach dem einmaligen Kauf von 0,99 € gehört dir das vollständige Spiel ohne Einschränkungen.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                    <span class="text-neonOrange-400">🎨</span> Wie wechsle ich das Theme (Kids, Cyber, Classic)?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Öffne im Hauptmenü der App das <strong>Einstellungen-Zahnrad</strong> oben rechts. Dort kannst du unter „Design-Themes“ per Tippen zwischen den drei Presets wechseln.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                    <span class="text-cyan-400">📐</span> Wie wähle ich ein anderes Spielfeld (Easy 9x9, Medium 8x8, Hard 7x7)?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Wenn du ein neues Spiel startest, kannst du im Start-Dialog die gewünschte Rastergröße auswählen. <strong>Easy (9x9)</strong> bietet mehr Platz und einfachere Steinformen für Kinder, während <strong>Hard (7x7)</strong> besonders anspruchsvoll ist.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                    <span class="text-emerald-400">✈️</span> Benötigt Brickify eine Internetverbindung?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Nein. Brickify ist 100 % offline spielbar. Es ist ideal für Reisen im Flugzeug, Fahrten in der Bahn oder für Kinder auf dem Rücksitz im Auto.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                    <span class="text-purple-400">📱</span> Welches Betriebssystem wird benötigt?
+                </h3>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    Brickify benötigt ein iPhone oder iPad mit <strong>iOS 17.0 oder neuer</strong>.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Direct Contact Section -->
+        <div class="glass-card rounded-3xl p-8 border border-white/10 text-center">
+            <h3 class="text-2xl font-display font-extrabold text-white mb-3">Noch Fragen oder Feedback?</h3>
+            <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">
+                Du hast einen Fehler gefunden oder möchtest uns ein Feature vorschlagen? Wir antworten in der Regel innerhalb von 24 Stunden.
+            </p>
+
+            <a href="mailto:support@directvalue.digital?subject=Support%20Brickify%20App" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-neonOrange-500 hover:from-indigo-500 hover:to-neonOrange-400 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg">
+                <span>📧 Support-Team anschreiben</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10 bg-slate-950 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p>© 2026 DirectValue Digital • Brickify Support & FAQ</p>
+        </div>
+    </footer>
+</body>
+
+</html>

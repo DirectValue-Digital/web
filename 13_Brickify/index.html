@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brickify – No Ads. Just Play. | Das pure iOS Block-Puzzle</title>
+    <meta name="description" content="Brickify ist die premium Block-Puzzle-App für iOS. 100% werbefrei, offline spielbar, kindersicher und einmalig für 0,99 € im App Store.">
+    <link rel="icon" href="../assets/icon_brickify.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        indigoBrand: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#1e1b4b',
+                        },
+                        neonOrange: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        cyberCyan: '#06b6d4',
+                        cyberMagenta: '#ec4899',
+                        cyberGreen: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(249, 115, 22, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px -10px rgba(79, 70, 229, 0.25);
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.22) 0%, rgba(249, 115, 22, 0.12) 35%, transparent 70%);
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+        }
+
+        .icon-glow {
+            box-shadow: 0 0 60px rgba(79, 70, 229, 0.4), 0 0 100px rgba(249, 115, 22, 0.2);
+        }
+
+        /* Block Grid Preview Styles */
+        .block-tile {
+            transition: all 0.3s ease;
+        }
+        
+        .kids-mode .block-tile-active {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(245, 158, 11, 0.3);
+        }
+        .kids-mode .block-tile-active-2 {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(2, 132, 199, 0.3);
+        }
+
+        .cyber-mode .block-tile-active {
+            background: #06b6d4;
+            border-radius: 4px;
+            box-shadow: 0 0 12px #06b6d4, inset 0 0 4px #ffffff;
+        }
+        .cyber-mode .block-tile-active-2 {
+            background: #ec4899;
+            border-radius: 4px;
+            box-shadow: 0 0 12px #ec4899, inset 0 0 4px #ffffff;
+        }
+
+        .classic-mode .block-tile-active {
+            background: linear-gradient(135deg, #d97706, #78350f);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+        .classic-mode .block-tile-active-2 {
+            background: linear-gradient(135deg, #64748b, #334155);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed w-full z-50 glass-nav top-0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-10 h-10 rounded-xl group-hover:scale-105 transition-transform border border-white/10">
+                <span class="font-bold text-lg tracking-tight text-white hidden sm:block">DirectValue Digital</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm font-medium">
+                <a href="#features" class="text-slate-300 hover:text-white transition-colors hidden md:block">Features</a>
+                <a href="#themes" class="text-slate-300 hover:text-white transition-colors hidden md:block">Themes</a>
+                <a href="#eltern-guide" class="text-slate-300 hover:text-white transition-colors hidden lg:block">Für Eltern</a>
+                <a href="#tech" class="text-slate-300 hover:text-white transition-colors hidden lg:block">Technik</a>
+                <a href="support.html" class="text-slate-300 hover:text-white transition-colors">Support</a>
+                <a href="privacy.html" class="text-slate-300 hover:text-white transition-colors">Privacy</a>
+                
+                <a href="#download" class="bg-gradient-to-r from-indigoBrand-600 to-neonOrange-500 hover:from-indigoBrand-500 hover:to-neonOrange-400 text-white font-semibold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-md transition-all">
+                    App Store (0,99 €)
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden hero-glow">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            
+            <!-- Top Pill Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs sm:text-sm font-medium mb-8 badge-glow">
+                <span class="w-2 h-2 rounded-full bg-neonOrange-500 animate-pulse"></span>
+                <span>NEU • Die werbefreie Block-Puzzle Alternative</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight text-white mb-6 leading-none">
+                Brickify
+            </h1>
+            
+            <p class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-slate-100 to-neonOrange-400 mb-8 max-w-4xl mx-auto">
+                No Ads. Just Play.
+            </p>
+
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-12 font-normal">
+                Das pure, ablenkungsfreie Puzzle-Erlebnis für Groß und Klein. 100 % werbefrei, offline spielbar & kindersicher – ohne In-App-Käufe oder Tracking.
+            </p>
+
+            <!-- App Icon Showcase -->
+            <div class="flex flex-col items-center justify-center gap-6 mb-12">
+                <div class="relative group">
+                    <img src="../assets/icon_brickify.png" alt="Brickify App Icon" class="w-36 h-36 sm:w-44 sm:h-44 rounded-[2.5rem] icon-glow border-4 border-white/10 group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+
+            <!-- Price Tag & CTA -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto" id="download">
+                <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-indigoBrand-600 via-indigo-600 to-neonOrange-500 hover:from-indigoBrand-500 hover:to-neonOrange-400 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-indigo-900/30 transition-all hover:scale-105 border border-white/10">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 384 512">
+                        <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-13.6 69.5-34.3z"/>
+                    </svg>
+                    <span>Im App Store laden – 0,99 €</span>
+                </a>
+            </div>
+
+            <!-- Guarantee Badges -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-400 font-medium">
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 100 % Werbefrei</span>
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Kein Abo / Einmalkauf</span>
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Offline spielbar</span>
+                <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Kindersicher</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Key Features Grid -->
+    <section id="features" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-xs uppercase tracking-widest font-bold text-neonOrange-500 mb-3">Warum Brickify?</h2>
+                <p class="text-3xl sm:text-5xl font-display font-extrabold text-white">Perfektionierte Puzzle-Mechanik</p>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Keine Unterbrechungen, keine versteckten Kosten. Nur du, die Bausteine und dein Highscore.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6 text-2xl">
+                            🛡️
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Vollständiger Kinderschutz</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Keine Werbe-SDKs, kein Tracking, keine In-App-Kauf-Fallen. Eine absolut geschützte Spielumgebung für sorgenfreien Spielspaß bei Kindern.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-indigo-300 font-semibold">100 % Safe Environment</div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-neonOrange-500/10 border border-neonOrange-500/20 flex items-center justify-center text-neonOrange-400 mb-6 text-2xl">
+                            🎨
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Dynamic Theme Engine</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Drei maßgeschneiderte Design-Welten für jede Altersgruppe: bunte 3D-Kissen für Kids, leuchtende Synthwave-Neon-Farben für Teens und natürliche Holz- & Steinoptik.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-neonOrange-300 font-semibold">Kids • Cyber • Classic</div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 text-2xl">
+                            📐
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Adaptive Rastergrößen</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Passe den Schwierigkeitsgrad flexibel an: 9x9 Easy Grid für Einsteiger ab 6 Jahren, 8x8 Medium als Standard und 7x7 Hard für echte Taktik-Profis.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-cyan-300 font-semibold">Easy (9x9) • Medium (8x8) • Hard (7x7)</div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 text-2xl">
+                            📳
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Spürbare CoreHaptics</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Fühle jeden Stein beim Ziehen, Einrasten und Reihen-Auflösen dank fein abgestimmter physischer Vibrations-Impulse des Taptic Engine von Apple.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-emerald-300 font-semibold">Native Haptic Engine</div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 text-2xl">
+                            💎
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Apple Liquid Glass UI</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Entworfen im edlen SwiftUI Glassmorphismus-Stil (`.ultraThinMaterial`) mit weichen Federanimationen und kraftvollen Combo-Soundeffekten.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-purple-300 font-semibold">SwiftUI & Soundscapes</div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-card rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-6 text-2xl">
+                            ✈️
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">100 % Offline Playable</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Perfekt für den Flugmodus, das Auto oder Funklöcher. Brickify benötigt keinerlei Internetverbindung und schont Akku und Datenvolumen.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 text-xs text-rose-300 font-semibold">Kein Online-Zwang</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Theme Showcase Section -->
+    <section id="themes" class="py-20 bg-slate-950/60 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-xs uppercase tracking-widest font-bold text-indigo-400 mb-3">Visuelle Vielfalt</h2>
+                <p class="text-3xl sm:text-5xl font-display font-extrabold text-white">Ein Spiel, drei visuelle Stile</p>
+                <p class="text-slate-400 mt-3 max-w-xl mx-auto">Wechsle jederzeit nahtlos zwischen den Themes im Einstellungen-Menü.</p>
+            </div>
+
+            <!-- Interactive Theme Selector Tabs -->
+            <div class="flex items-center justify-center gap-3 mb-12 max-w-md mx-auto p-1.5 rounded-2xl bg-slate-900 border border-white/10">
+                <button onclick="switchTheme('kids')" id="tab-kids" class="flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-indigoBrand-600 text-white shadow-lg">
+                    Kids 🎈
+                </button>
+                <button onclick="switchTheme('cyber')" id="tab-cyber" class="flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all text-slate-400 hover:text-white">
+                    Cyber ⚡
+                </button>
+                <button onclick="switchTheme('classic')" id="tab-classic" class="flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all text-slate-400 hover:text-white">
+                    Classic 🪵
+                </button>
+            </div>
+
+            <!-- Display Box for Active Theme -->
+            <div id="theme-preview-container" class="glass-card rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto kids-mode relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Left Column: Interactive Simulated Block Grid -->
+                    <div class="bg-slate-900/90 rounded-2xl p-6 border border-white/10 shadow-2xl flex flex-col items-center">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center justify-between w-full">
+                            <span>Spielfeld Simulation (8x8)</span>
+                            <span id="theme-grid-label" class="text-amber-400">Kids Preset</span>
+                        </div>
+                        
+                        <!-- 6x6 preview grid -->
+                        <div class="grid grid-cols-6 gap-2 w-full max-w-[240px] aspect-square p-3 bg-slate-950 rounded-xl border border-white/5">
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+                            <div class="block-tile rounded block-tile-active-2"></div>
+
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+                            <div class="block-tile rounded bg-slate-900"></div>
+
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                            <div class="block-tile rounded block-tile-active"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Theme Description -->
+                    <div>
+                        <span id="theme-tag" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-300 border border-amber-500/20">
+                            Für Kinder & Familie
+                        </span>
+                        <h3 id="theme-title" class="text-3xl font-display font-extrabold text-white mt-4 mb-4">
+                            Kids-Theme: Bunt & Weich
+                        </h3>
+                        <p id="theme-desc" class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Fröhliche, hochkontrastreiche Pastelltöne mit weichen Kanten und 3D-Kissenoptik. Ideal für Kinder ab 6 Jahren – regt die räumliche Wahrnehmung ohne Reizüberflutung an.
+                        </p>
+                        <ul id="theme-bullets" class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Abgerundete 3D-Baustein-Texturen</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Erhöhte Kontraste für einfache Erkennung</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Sanfte Sound-Belohnungen</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Parent Guide / Target Group Section -->
+    <section id="eltern-guide" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
+                        💚 Eltern-Versprechen
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white mb-6">
+                        Die faire Antwort auf Gratis-Spiele mit Werbefallen
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Gängige Block-Puzzle-Apps belasten Kinder und Eltern mit ständigen 30-Sekunden-Videoanzeigen, verstörender Werbung für ungeeignete Spiele und getarnten Abo-Buttons.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed mb-8">
+                        <strong>Brickify macht damit Schluss:</strong> Einmalig 0,99 € bezahlen und für immer ruhevoll spielen. Keine Banner, keine Popups, kein Datenhunger.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                            <div class="text-2xl">🚫</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Kein Tracking & Keine Werbung</h4>
+                                <p class="text-xs text-slate-400 mt-1">Kein einziges Werbe-SDK ist in den App-Code eingebunden.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+                            <div class="text-2xl">🧠</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Fördert Konzentration & Logik</h4>
+                                <p class="text-xs text-slate-400 mt-1">Gleichmäßige Entspannung ohne künstlichen Zeitdruck oder Timer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Card -->
+                <div class="glass-card rounded-3xl p-8 border border-white/10">
+                    <h3 class="text-xl font-bold text-white mb-6 text-center">Der direkte Vergleich</h3>
+
+                    <div class="space-y-4 text-sm">
+                        <!-- Brickify Row -->
+                        <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-emerald-400">Brickify (0,99 €)</div>
+                                <div class="text-xs text-slate-400">100% Einmalkauf</div>
+                            </div>
+                            <div class="text-emerald-400 font-bold text-right">
+                                <div>✓ 0% Werbung</div>
+                                <div class="text-xs">✓ 100% Offline</div>
+                            </div>
+                        </div>
+
+                        <!-- Competitor Row -->
+                        <div class="p-4 rounded-2xl bg-rose-950/30 border border-rose-500/20 flex items-center justify-between opacity-80">
+                            <div>
+                                <div class="font-bold text-rose-400">Typische "Gratis" Apps</div>
+                                <div class="text-xs text-slate-400">Freemium / Abos</div>
+                            </div>
+                            <div class="text-rose-400 font-bold text-right text-xs">
+                                <div>✕ Video-Zwangswerbung</div>
+                                <div>✕ Tracking & Datenverkauf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications & Apple Standards Section -->
+    <section id="tech" class="py-20 bg-slate-950/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-xs uppercase tracking-widest font-bold text-cyan-400 mb-3">Native Qualität</h2>
+                <p class="text-3xl sm:text-4xl font-display font-extrabold text-white">Gebaut für Apple iOS</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div class="text-slate-400 text-xs font-semibold uppercase mb-2">Framework</div>
+                    <div class="text-xl font-bold text-white mb-2">100 % SwiftUI</div>
+                    <p class="text-xs text-slate-400">Maximale Flüssigkeit mit 120Hz ProMotion Unterstützung auf aktuellen iPhones.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div class="text-slate-400 text-xs font-semibold uppercase mb-2">Haptik</div>
+                    <div class="text-xl font-bold text-white mb-2">CoreHaptics API</div>
+                    <p class="text-xs text-slate-400">Physische Vibrations-Muster abgestimmt auf Snap-to-Grid und Combos.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div class="text-slate-400 text-xs font-semibold uppercase mb-2">Barrierefreiheit</div>
+                    <div class="text-xl font-bold text-white mb-2">Dynamic Type</div>
+                    <p class="text-xs text-slate-400">Unterstützung für individuelle System-Schriftgrößen & VoiceOver.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div class="text-slate-400 text-xs font-semibold uppercase mb-2">Kompatibilität</div>
+                    <div class="text-xl font-bold text-white mb-2">iOS 17.0+</div>
+                    <p class="text-xs text-slate-400">Optimiert für iPhone und iPad (Universal Binary Purchase).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 bg-slate-950 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="../assets/logo.jpg" alt="DirectValue Digital Logo" class="w-8 h-8 rounded-lg">
+                <span class="text-white font-bold">DirectValue Digital</span>
+                <span class="text-slate-600">|</span>
+                <span>Brickify © 2026</span>
+            </div>
+
+            <div class="flex items-center gap-6 text-xs sm:text-sm">
+                <a href="support.html" class="hover:text-white transition-colors">Support & FAQ</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Datenschutz</a>
+                <a href="../legal/impressum.html" class="hover:text-white transition-colors">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script for Theme Selector -->
+    <script>
+        function switchTheme(theme) {
+            const container = document.getElementById('theme-preview-container');
+            const tabKids = document.getElementById('tab-kids');
+            const tabCyber = document.getElementById('tab-cyber');
+            const tabClassic = document.getElementById('tab-classic');
+
+            const themeLabel = document.getElementById('theme-grid-label');
+            const themeTag = document.getElementById('theme-tag');
+            const themeTitle = document.getElementById('theme-title');
+            const themeDesc = document.getElementById('theme-desc');
+            const themeBullets = document.getElementById('theme-bullets');
+
+            // Reset tab styles
+            [tabKids, tabCyber, tabClassic].forEach(tab => {
+                tab.className = "flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all text-slate-400 hover:text-white";
+            });
+
+            // Reset container class
+            container.className = "glass-card rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto relative overflow-hidden transition-all duration-500 " + theme + "-mode";
+
+            if (theme === 'kids') {
+                tabKids.className = "flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-indigoBrand-600 text-white shadow-lg";
+                themeLabel.textContent = "Kids Preset";
+                themeLabel.className = "text-amber-400 font-bold";
+                themeTag.textContent = "Für Kinder & Familie";
+                themeTag.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-300 border border-amber-500/20";
+                themeTitle.textContent = "Kids-Theme: Bunt & Weich";
+                themeDesc.textContent = "Fröhliche, hochkontrastreiche Pastelltöne mit weichen Kanten und 3D-Kissenoptik. Ideal für Kinder ab 6 Jahren – regt die räumliche Wahrnehmung ohne Reizüberflutung an.";
+                themeBullets.innerHTML = `
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Abgerundete 3D-Baustein-Texturen</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Erhöhte Kontraste für einfache Erkennung</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Sanfte Sound-Belohnungen</li>
+                `;
+            } else if (theme === 'cyber') {
+                tabCyber.className = "flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-cyan-600 text-white shadow-lg";
+                themeLabel.textContent = "Cyber Preset";
+                themeLabel.className = "text-cyan-400 font-bold";
+                themeTag.textContent = "Teens & Arcade Fans";
+                themeTag.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/20";
+                themeTitle.textContent = "Cyber-Theme: Neon Synthwave";
+                themeDesc.textContent = "Spektakuläre Neon-Farben (Elektro-Cyan, Magenta, Acid Green) mit feinen Glow-Effekten vor dunklem Hintergrund. Inpiriert von Synthwave und Retro-Arcade.";
+                themeBullets.innerHTML = `
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Neon Glow Effekte bei Reihenauflösung</li>
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Synthwave-Soundkulisse & Akzente</li>
+                    <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Hoher Kontrast für dunkle Umgebungen</li>
+                `;
+            } else if (theme === 'classic') {
+                tabClassic.className = "flex-1 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-amber-700 text-white shadow-lg";
+                themeLabel.textContent = "Classic Preset";
+                themeLabel.className = "text-amber-600 font-bold";
+                themeTag.textContent = "Entspannung & Purismus";
+                themeTag.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-700/10 text-amber-400 border border-amber-700/20";
+                themeTitle.textContent = "Classic-Theme: Holz & Stein";
+                themeDesc.textContent = "Warme Echtholz-Nuancen und elegante Schieferstein-Strukturen für beruhigendes, zeitloses Puzzeln nach Feierabend.";
+                themeBullets.innerHTML = `
+                    <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Edle Holzmaserung & Haptik</li>
+                    <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Dezent-beruhigende Farbgebung</li>
+                    <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Akustische Holz-Klick Sounds</li>
+                `;
+            }
+        }
+    </script>
+</body>
+
+</html>

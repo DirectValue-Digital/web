@@ -9,3 +9,4 @@
 - `2026-06-24` Projekt-Struktur: 12_Target_Walk Dashboard-Mockup entspricht der SwiftUI-Implementierung
 - `2026-07-01` Projekt-Struktur: 05_Workout_Timer als statisches HTML integriert
 - `2026-07-01` Simulator spiegelt das echte SwiftUI Grid-Layout und die Timer-Session-Ansicht inklusive Farbthemen wider
+- `2026-07-20` Projekt-Struktur: 13_Brickify als statisches HTML integriert

@@ -22,3 +22,6 @@
 - `2026-07-01 13:13` Neues Projekt 05_Workout_Timer hinzugefügt
 - `2026-07-01 13:18` Mockup in 05_Workout_Timer auf interaktiven Simulator umgestellt
 - `2026-07-01 19:32` App-Name von Intervally auf Intervally Pro aktualisiert
+
+## 2026-07-20
+- `2026-07-20 09:54` Neues Projekt 13_Brickify hinzugefügt
